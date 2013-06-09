@@ -1,4 +1,3 @@
-grunt-assemble
-==============
+# Assemble
 
-Visit https://github.com/assemble/assemble
+This project was moved to https://github.com/assemble/assemble
