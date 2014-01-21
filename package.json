@@ -35,7 +35,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt mochaTest"
+    "test": "grunt mochaTest",
+    "install": "echo WARNING!!! This package uses the alpha version of Assemble."
   },
   "dependencies": {
     "lodash": "~2.4.0",
