@@ -1,13 +1,22 @@
-# assemble [![NPM version](https://badge.fury.io/js/assemble.png)](http://badge.fury.io/js/assemble)  [![Build Status](https://travis-ci.org/assemble/assemble.png)](https://travis-ci.org/assemble/assemble)
+# grunt-assemble [![NPM version](https://badge.fury.io/js/grunt-assemble.png)](http://badge.fury.io/js/grunt-assemble)  [![Build Status](https://travis-ci.org/assemble/grunt-assemble.png)](https://travis-ci.org/assemble/grunt-assemble)
 
 > Static site generator for Grunt.js and Yeoman. Assemble makes it dead simple to build modular sites, blogs, gh-pages, components and documentation from reusable templates and data.
 
 ### [Visit the website →](http://assemble.io)
 
-## Why use Assemble? 
 
-1. Most popular site generator for Grunt.js and Yeoman. Assemble is used to build hundreds of web projects, ranging in size from a single page to 14,000 pages (that we're aware of!). [Let us know if you use Assemble](https://github.com/assemble/assemble/issues/300). 
-1. Allows you to carve your HTML up into reusable fragments: partials, includes, sections, snippets... Whatever you prefer to call them, Assemble does that. 
+## WARNING!!!
+
+grunt-assemble is using the [alpha branch of Assemble (v0.5.0)](https://github.com/assemble/assemble/tree/v0.5.0).
+
+This is not read to be used unless you're willing to deal with daily changes, broken code, and lack of documentation.
+
+
+
+## Why use Assemble?
+
+1. Most popular site generator for Grunt.js and Yeoman. Assemble is used to build hundreds of web projects, ranging in size from a single page to 14,000 pages (that we're aware of!). [Let us know if you use Assemble](https://github.com/assemble/assemble/issues/300).
+1. Allows you to carve your HTML up into reusable fragments: partials, includes, sections, snippets... Whatever you prefer to call them, Assemble does that.
 1. Optionally use `layouts` to wrap your pages with commonly used elements and content.
 1. "Pages" can either be defined as HTML/templates, JSON or YAML, or directly inside the Gruntfile.
 1. It's awesome. Lol just kidding. But seriously, Assemble... is... awesome! and it's fun to use.
@@ -26,13 +35,13 @@ _If you haven't used [grunt][] before, be sure to check out the [Getting Started
 From the same directory as your project's [Gruntfile][Getting Started] and [package.json][], install Assemble with the following command:
 
 ```bash
-npm install assemble --save-dev
+npm install grunt-assemble --save-dev
 ```
 
 Once that's done, add this line to your project's Gruntfile:
 
 ```js
-grunt.loadNpmTasks('assemble');
+grunt.loadNpmTasks('grunt-assemble');
 ```
 
 ### The "assemble" task
@@ -261,7 +270,7 @@ Visit [Assemble's documentation](http://assemble.io) for many more examples and 
 
 
 ## Contributing
-Find a bug? Have a feature request? Please [create an Issue](git://github.com/assemble/assemble/issues).
+Find a bug? Have a feature request? Please [create an Issue](git://github.com/assemble/grunt-assemble/issues).
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt][], and build the documentation with [grunt-readme](https://github.com/assemble/grunt-readme).
 
@@ -277,7 +286,7 @@ Here are some related projects you might be interested in from the [Assemble](ht
 + [assemble-contrib-download](https://github.com/assemble/assemble-contrib-download): Assemble plugin for downloading files from GitHub. 
 + [assemble-contrib-i18n](https://github.com/assemble/assemble-contrib-i18n): Plugin for adding i18n support to Assemble projects. 
 + [assemble-contrib-lunr](https://github.com/assemble/assemble-contrib-lunr): Assemble plugin for creating a search engine within your static site using lunr.js. 
-+ [assemble-contrib-markdown](https://github.com/assemble/assemble-contrib-markdown): Convert markdown files to HTML using marked.js. This plugin is an alternative to Assemble's markdown Handlebars helpers. Both are useful in different scenarios. 
++ [assemble-contrib-markdown](https://github.com/assemble/assemble-contrib-markdown): HEADS UP! This isn't ready for prime time! Convert markdown files to HTML using marked.js. This plugin is an alternative to Assemble's markdown Handlebars helpers. Both are useful in different scenarios. 
 + [assemble-contrib-permalinks](https://github.com/assemble/assemble-contrib-permalinks): Permalinks plugin for Assemble, the static site generator for Grunt.js and Yeoman. This plugin enables powerful and configurable URI replacement patterns, presets, uses Moment.js for parsing dates, and much more. 
 + [assemble-contrib-sitemap](https://github.com/assemble/assemble-contrib-sitemap): Sitemap generator plugin for Assemble 
 + [assemble-contrib-toc](https://github.com/assemble/assemble-contrib-toc): Create a table of contents in the generated HTML, using Cheerio.js 
@@ -302,7 +311,8 @@ Visit [assemble.io/plugins](http:/assemble.io/plugins/) for more information abo
 
 ## Release History
 
- * 2013-12-01   v0.5.0-alpha   Starting major refactoring.
+_(Nothing yet)_
+
 
 
 ## License
@@ -311,7 +321,7 @@ Released under the MIT license
 
 ***
 
-_This file was generated by [grunt-readme](https://github.com/assemble/grunt-readme) on Thursday, January 16, 2014._
+_This file was generated by [grunt-readme](https://github.com/assemble/grunt-readme) on Tuesday, January 21, 2014._
 
 [grunt]: http://gruntjs.com/
 [Getting Started]: https://github.com/gruntjs/grunt/blob/devel/docs/getting_started.md

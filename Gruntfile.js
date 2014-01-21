@@ -67,13 +67,16 @@ module.exports = function (grunt) {
 
     assemble: {
       options: {
-        taskOpts: 'something'
+        taskOpts: 'something',
+        // plugins: ['lib/plugins/*.js'],
+        expand: true,
+        cwd: 'node_modules/fixture/handlebars/with-yfm'
       },
       compact: {
         options: {
           targetOpts: 'compact'
         },
-        src: ['test/fixtures/templates/one.hbs', 'test/fixtures/templates/t*.hbs'],
+        src: ['example.hbs', 'y*.hbs'],
         dest: 'test/actual/'
       },
       filesObj: {
@@ -81,8 +84,8 @@ module.exports = function (grunt) {
           targetOpts: 'filesObj'
         },
         files: {
-          'test/actual/one.html': 'test/fixtures/templates/one.hbs',
-          'test/actual/t.html': ['test/fixtures/templates/t*.hbs']
+          'test/actual/example.html': 'example.hbs',
+          'test/actual/y.html': ['y*.hbs']
         }
       },
       filesArr: {
@@ -92,8 +95,7 @@ module.exports = function (grunt) {
         files: [
           {
             dest: 'test/actual/',
-            src: 'test/fixtures/templates/**/*.hbs'
-            //cwd: 'test/fixtures/templates'
+            src: '**/*.hbs'
           }
         ]
       },
@@ -105,30 +107,51 @@ module.exports = function (grunt) {
           {
             expand: true,
             dest: 'test/actual/',
-            src: 'test/fixtures/templates/one.hbs'
-            //cwd: 'test/fixtures/templates'
+            src: 'example.hbs'
           },
           {
             expand: true,
             dest: 'test/actual/',
-            src: 'test/fixtures/templates/two.hbs'
-            //cwd: 'test/fixtures/templates'
+            src: 'yfm-context.hbs'
           },
           {
             expand: true,
             dest: 'test/actual/',
-            src: 'test/fixtures/templates/three.hbs'
-            //cwd: 'test/fixtures/templates'
+            src: 'yfm.hbs'
           },
           {
             expand: true,
             dest: '/test/actual/',
-            src: 'test/fixtures/templates/**/*.hbs'
-            //cwd: 'test/fixtures/templates'
+            src: '**/*.hbs'
           }
         ]
       }
     },
+
+    /**
+     * Pull down a list of repos from Github, for the docs
+     */
+    repos: {
+      plugins: {
+        options: {
+          username: 'assemble',
+          include: ['contrib'], exclude: ['grunt', 'example', 'rss']
+        },
+        files: {
+          'docs/plugins.json': ['repos?page=1&per_page=100']
+        }
+      }
+    },
+
+    /**
+     * Build the README using metadata from the repos task.
+     */
+    readme: {
+      options: {
+        metadata: ['docs/plugins.json']
+      }
+    },
+
 
     /**
      * Before generating any new files,
@@ -156,13 +179,14 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-readme');
+  grunt.loadNpmTasks('grunt-repos');
   grunt.loadNpmTasks('grunt-sync-pkg');
 
   // Load this plugin.
   grunt.loadTasks('tasks');
 
   // Build
-  grunt.registerTask('docs', ['readme', 'sync']);
+  grunt.registerTask('docs', ['repos', 'readme', 'sync']);
 
   // Tests to be run.
   grunt.registerTask('test', ['assemble', 'mochaTest']);

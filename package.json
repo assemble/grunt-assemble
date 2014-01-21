@@ -52,7 +52,9 @@
     "grunt-readme": "~0.4.0",
     "grunt-sync-pkg": "~0.1.1",
     "time-grunt": "~0.1.2",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt-contrib-watch": "~0.5.3",
+    "fixture": "~0.1.0",
+    "grunt-repos": "~0.1.2"
   },
   "keywords": [
     "blog generator",
