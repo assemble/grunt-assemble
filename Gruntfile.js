@@ -69,14 +69,16 @@ module.exports = function (grunt) {
       options: {
         taskOpts: 'something',
         // plugins: ['lib/plugins/*.js'],
-        expand: true,
-        cwd: 'node_modules/fixture/handlebars/with-yfm'
+        expand: true
+        // log: {
+        //   level: 'debug'
+        // }
       },
       compact: {
         options: {
           targetOpts: 'compact'
         },
-        src: ['example.hbs', 'y*.hbs'],
+        src: ['test/fixtures/templates/components/alert.hbs', 'test/fixtures/templates/t*.hbs'],
         dest: 'test/actual/'
       },
       filesObj: {
@@ -84,8 +86,8 @@ module.exports = function (grunt) {
           targetOpts: 'filesObj'
         },
         files: {
-          'test/actual/example.html': 'example.hbs',
-          'test/actual/y.html': ['y*.hbs']
+          'test/actual/alert.html': 'test/fixtures/templates/components/alert.hbs',
+          'test/actual/t.html': ['test/fixtures/templates/t*.hbs']
         }
       },
       filesArr: {
@@ -94,6 +96,8 @@ module.exports = function (grunt) {
         },
         files: [
           {
+            expand: true,
+            cwd: 'test/fixtures/templates',
             dest: 'test/actual/',
             src: '**/*.hbs'
           }
@@ -106,21 +110,25 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
+            cwd: 'test/fixtures/templates/components',
             dest: 'test/actual/',
-            src: 'example.hbs'
+            src: 'alert.hbs'
           },
           {
             expand: true,
+            cwd: 'test/fixtures/templates',
             dest: 'test/actual/',
-            src: 'yfm-context.hbs'
+            src: 'two.hbs'
           },
           {
             expand: true,
+            cwd: 'test/fixtures/templates',
             dest: 'test/actual/',
-            src: 'yfm.hbs'
+            src: 'three.hbs'
           },
           {
             expand: true,
+            cwd: 'test/fixtures/templates',
             dest: '/test/actual/',
             src: '**/*.hbs'
           }
