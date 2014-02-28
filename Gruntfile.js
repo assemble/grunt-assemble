@@ -105,7 +105,8 @@ module.exports = function (grunt) {
       },
       baz: {
         options: {
-          targetOpts: 'baz'
+          targetOpts: 'baz',
+          partials: ['test/fixtures/partials/**/*.hbs']
         },
         files: [
           {
