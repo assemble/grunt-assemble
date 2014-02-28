@@ -33,6 +33,7 @@ module.exports = function (grunt) {
       // normalize grunt options data into assemble metadata
       var options = normalize.options(grunt, self, assemble.defaults);
       options.components = components;
+      options.grunt = grunt;
 
       // build the assemble options object
       var assembleOptions = {
