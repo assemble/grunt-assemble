@@ -17,6 +17,8 @@ var normalize = require('../lib/normalize');
 
 module.exports = function (grunt) {
 
+  var logOpts = grunt.option('log');
+
   grunt.registerMultiTask('assemble', 'Compile template files with specified engines', function () {
 
     var done = this.async();
@@ -34,6 +36,10 @@ module.exports = function (grunt) {
       var options = normalize.options(grunt, self, assemble.defaults);
       options.components = components;
       options.grunt = grunt;
+
+      // if there are command line options set, use those
+      options.log = options.log || {};
+      options.log.level = logOpts || options.log.level || 'error';
 
       // build the assemble options object
       var assembleOptions = {
