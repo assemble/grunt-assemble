@@ -1,14 +1,8 @@
-/*
- * Assemble
- * Created and maintained by Jon Schlinkert and Brian Woodward
- * http://assemble.io
+/*!
+ * Assemble <http://assemble.io>
  *
- * Assemble is a full-featured documentation generator,
- * static site generator and component builder. Created
- * from the ground up as a plugin for Grunt.js.
- *
- * Copyright (c) 2013 Upstage
- * Licensed under the MIT License (MIT).
+ * Copyright (c) 2014 Jon Schlinkert, Brian Woodward, contributors.
+ * Licensed under the MIT License (MIT)
  */
 
 module.exports = function (grunt) {
@@ -19,28 +13,7 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
 
-    // Metadata for tests
-    pkg: grunt.file.readJSON('package.json'),
-
-    // Metadata for banners
-    meta: {
-      license: '<%= _.pluck(pkg.licenses, "type").join(", ") %>',
-      copyright: 'Copyright (c) <%= grunt.template.today("yyyy") %>',
-      banner: [
-        '/* \n',
-        ' * <%= pkg.name %> v<%= pkg.version %> \n',
-        ' * http://assemble.io \n',
-        ' * \n',
-        ' * <%= meta.copyright %>, <%= pkg.author.name %> \n',
-        ' * Licensed under the <%= meta.license %> License. \n',
-        ' * \n',
-        ' */ \n\n'
-      ].join('\n')
-    },
-
-    /**
-     * Lint all JavaScript
-     */
+    // Lint all JavaScript
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -53,9 +26,7 @@ module.exports = function (grunt) {
       ]
     },
 
-    /**
-     * Run mocha tests.
-     */
+    // Run mocha unit tests.
     mochaTest: {
       tests: {
         options: {
@@ -68,11 +39,25 @@ module.exports = function (grunt) {
     assemble: {
       options: {
         taskOpts: 'something',
+        layoutdir: 'test/fixtures/layouts',
+        // log: { level: 'debug' },
         // plugins: ['lib/plugins/*.js'],
-        expand: true
-        // log: {
-        //   level: 'debug'
-        // }
+      },
+      // Should render pages with `layout: false` or `layout: none` defined
+      no_layout: {
+        files: {
+          'test/actual/no_layout/': ['test/fixtures/pages/nolayout/*.hbs']
+        }
+      },
+      // Should allow Layouts defined in YFM to be defined without an extension.
+      layout_ext: {
+        options: {
+          layout: 'none', // override default, layout is redefined in YFM
+          layoutext: '.hbs'
+        },
+        files: {
+          'test/actual/layout_ext/': ['test/fixtures/pages/layoutext/layoutext.hbs']
+        }
       },
       compact: {
         options: {
@@ -126,12 +111,6 @@ module.exports = function (grunt) {
             cwd: 'test/fixtures/templates',
             dest: 'test/actual/',
             src: 'three.hbs'
-          },
-          {
-            expand: true,
-            cwd: 'test/fixtures/templates',
-            dest: '/test/actual/',
-            src: '**/*.hbs'
           }
         ]
       }
@@ -141,6 +120,7 @@ module.exports = function (grunt) {
     /**
      * Targets from the original assemble
      */
+
     'assemble-regression': {
       options: {
         assets: 'test/assets',
@@ -149,22 +129,7 @@ module.exports = function (grunt) {
         layout: 'default.hbs',
         flatten: true
       },
-      // Should render pages with `layout: false` or `layout: none` defined
-      no_layout: {
-        files: {
-          'test/actual/no_layout/': ['test/fixtures/pages/nolayout/*.hbs']
-        }
-      },
-      // Should allow Layouts defined in YFM to be defined without an extension.
-      layout_ext: {
-        options: {
-          layout: 'none', // override default, layout is redefined in YFM
-          layoutext: '.hbs'
-        },
-        files: {
-          'test/actual/layout_ext/': ['test/fixtures/pages/layoutext/layoutext.hbs']
-        }
-      },
+
       // Should flatten nested layouts
       nested_layouts: {
         options: {
@@ -180,7 +145,7 @@ module.exports = function (grunt) {
       custom_helpers: {
         options: {
           helpers: ['test/helpers/*.js'],
-          name: '<%= pkg.name %>'
+          // name: '<%= pkg.name %>'
         },
         files: {
           'test/actual/custom_helpers/': ['test/fixtures/helpers/{foo,bar,opt}.hbs']
@@ -427,32 +392,6 @@ module.exports = function (grunt) {
       }
     },
 
-
-    /**
-     * Pull down a list of repos from Github, for the docs
-     */
-    repos: {
-      plugins: {
-        options: {
-          username: 'assemble',
-          include: ['contrib'], exclude: ['grunt', 'example', 'rss']
-        },
-        files: {
-          'docs/plugins.json': ['repos?page=1&per_page=100']
-        }
-      }
-    },
-
-    /**
-     * Build the README using metadata from the repos task.
-     */
-    readme: {
-      options: {
-        metadata: ['docs/plugins.json']
-      }
-    },
-
-
     /**
      * Before generating any new files,
      * remove files from the previous build
@@ -474,26 +413,17 @@ module.exports = function (grunt) {
   });
 
   // Load NPM plugins to provide the necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-readme');
-  grunt.loadNpmTasks('grunt-repos');
-  grunt.loadNpmTasks('grunt-sync-pkg');
+  require('load-grunt-tasks')(grunt);
 
   // Load this plugin.
   grunt.loadTasks('tasks');
 
-  // Build
-  grunt.registerTask('docs', ['repos', 'readme', 'sync']);
-
   // Tests to be run.
   grunt.registerTask('test', ['assemble', 'mochaTest']);
 
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', 'test', 'docs']);
-
   // Dev task.
   grunt.registerTask('dev', ['jshint', 'test', 'watch']);
+
+  // Default task.
+  grunt.registerTask('default', ['jshint', 'clean', 'test', 'verb']);
 };
