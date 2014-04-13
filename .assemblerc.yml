@@ -1,0 +1,74 @@
+# =============================================
+# DEST CONFIG
+# =============================================
+
+dest:         test/actual
+actual:       <%= test.dest %>
+
+# Test assets
+public:       <%= test.dest %>/public
+
+
+# =============================================
+# SOURCE CONFIG
+# =============================================
+
+# Data
+data:         data
+utils:        <%= test.data %>/_lib
+mixins:       <%= test.data %>/_lib
+
+# Assets > fonts, icons, images etc.
+assets:       assets
+images:       <%= test.assets %>/images
+fonts:        <%= test.assets %>/fonts
+
+# Styles
+styles:       styles
+
+# Scripts
+scripts:      scripts
+
+# Content
+content:      content
+
+
+# =============================================
+# TEMPLATES
+# =============================================
+
+base:         test
+fixtures:     <%= test.base %>/fixtures
+templates:    <%= test.fixtures %>/templates
+
+# pages
+pages:        <%= test.fixtures %>/pages
+
+# partials
+components:   <%= test.fixtures %>/components
+includes:     <%= test.fixtures %>/includes
+snippets:     <%= test.fixtures %>/snippets
+
+# layouts
+layouts:      <%= test.fixtures %>/layouts
+layoutext:    .hbs
+layout:       default
+
+
+# =============================================
+# EXTENSIONS
+# =============================================
+
+helpers:      <%= test.base %>/_helpers
+plugins:
+  # - assemble-contrib-navigation
+
+
+# =============================================
+# SITE METADATA
+# =============================================
+
+version:      <%= pkg.version %>
+
+name:         <%= pkg.name %>
+title:        <%= pkg.name %>

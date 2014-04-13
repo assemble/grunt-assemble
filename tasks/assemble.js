@@ -8,7 +8,6 @@
 var path = require('path');
 var file = require('fs-utils');
 var async = require('async');
-var plasma = require('plasma');
 var assemble = require('assemble');
 var _str = require('underscore.string');
 var _ = require('lodash');
@@ -23,11 +22,8 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('assemble', 'Compile template files with specified engines', function () {
 
-    var done = this.async({
-      expand: true
-    });
-
     var self = this;
+    var done = this.async();
 
     grunt.log.writeln(); // empty line
 
@@ -72,31 +68,17 @@ module.exports = function (grunt) {
       options.log = options.log || {};
       options.log.level = logOpts || options.log.level || 'error';
 
-      // Set the config for plasma
-      var configDefaults = [
-        {name: 'pkg', src: 'package.json'},
-        {name: 'site', src: '.assemblerc.yml'},
-        {name: ':basename', src: options.data}
-      ];
-
-      // Load in config data.
-      var config = plasma.load(configDefaults);
-
-      // Build up the context with config data
-      var context = processContext(_.cloneDeep(config.data));
-
-      if (options.debug) {
-        file.writeJSONSync("options.json", context);
-      }
-
-      // Restore Grunt's config data.
-      grunt.config.data = originalConfig;
-
       // build the assemble options object
       var assembleOptions = {
         name: self.target,
         metadata: options
       };
+
+      // Build up the context with config data
+      processContext();
+
+      // Restore Grunt's config data.
+      grunt.config.data = originalConfig;
 
       // configure assemble and build
       assemble(assembleOptions).build(function (err, results) {
@@ -111,8 +93,7 @@ module.exports = function (grunt) {
 
         async.each(keys, function (key, nextComponent) {
           var component = results.components[key];
-
-          grunt.verbose.writeln('  writing'.green, component.dest);
+          grunt.log.writeln('  writing'.green, component.dest);
 
           if (options.debug) {
             grunt.verbose.writeln(component);

@@ -56,7 +56,8 @@
     "grunt-mocha-test": "~0.7.0",
     "load-grunt-tasks": "~0.4.0",
     "time-grunt": "~0.1.2",
-    "grunt-verb": "~0.1.1"
+    "grunt-verb": "~0.1.1",
+    "relative": "~0.1.3"
   },
   "keywords": [
     "blog generator",

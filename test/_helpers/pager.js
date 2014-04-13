@@ -1,29 +1,31 @@
 /**
- * Handlebars Helpers: {{pagination}}
- * Copyright (c) 2013 Jon Schlinkert
+ * Handlebars Helpers: {{pager}}
+ * Copyright (c) 2014 Jon Schlinkert
  * Licensed under the MIT License (MIT).
  */
 
 var _ = require('lodash');
 
-
 // Export helpers
-module.exports.register = function (Handlebars, options) {
+module.exports = function (config) {
   'use strict';
 
-  var opts = options || {};
+  var Handlebars = config.Handlebars;
+  // var opts = config.options || {};
+  var helpers = {};
 
   /**
    * {{pager}}
+   *
    * Adds a pager to enable navigating to prev and next page/post.
    * @param  {Object} context Context to pass to the helper, most likely `pagination`.
    * @param  {Object} options Pass a modifier class to the helper.
    * @return {String}         The pagination, HTML.
    */
-  exports.pager = function(context, options) {
+  helpers.pager = function(context, options) {
     options = options || {};
     options.hash = options.hash || {};
-    context = _.extend({modifier: ''}, context, opts.data, this, options.hash);
+    context = _.extend({modifier: ''}, context, this, options.hash);
 
     var template = [
       '<ul class="pager{{#if modifier}} {{modifier}}{{/if}}">',
@@ -88,9 +90,5 @@ module.exports.register = function (Handlebars, options) {
     return new Handlebars.SafeString(Handlebars.compile(template)(context) + styles);
   };
 
-  for (var helper in exports) {
-    if (exports.hasOwnProperty(helper)) {
-      Handlebars.registerHelper(helper, exports[helper]);
-    }
-  }
+  return helpers;
 };

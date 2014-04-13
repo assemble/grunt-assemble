@@ -13,40 +13,53 @@ module.exports = function (grunt) {
   // Project configuration.
   grunt.initConfig({
 
+    pkg: grunt.file.readJSON('package.json'),
+    test: grunt.file.readYAML('.assemblerc.yml'),
+    config: grunt.file.readJSON('test/fixtures/data/config.json'),
+
     // Lint all JavaScript
     jshint: {
       options: {
         jshintrc: '.jshintrc'
       },
-      files: [
-        'Gruntfile.js',
-        'lib/**/*.js',
-        'tasks/**/*.js',
-        'test/**/*.js'
-      ]
+      files: ['Gruntfile.js', 'lib/*.js', 'tasks/*.js', 'test/*.js']
     },
 
     // Run mocha unit tests.
     mochaTest: {
       tests: {
-        options: {
-          reporter: 'progress'
-        },
-        src: ['test/**/*_test.js']
+        options: {reporter: 'spec'},
+        src: ['test/*.js']
       }
+    },
+
+    // Example config data for "pages_array" and "pages_object" targets
+    component: {
+      one: "alert"
     },
 
     assemble: {
       options: {
+        flatten: true,
+        pkg: '<%= pkg %>',
+        test: '<%= test %>',
+        config: '<%= config %>',
+
         taskOpts: 'something',
-        layoutdir: 'test/fixtures/layouts',
-        // log: { level: 'debug' },
-        // plugins: ['lib/plugins/*.js'],
+        assets: '<%= test.public %>',
+        helpers: [
+          '<%= test.helpers %>/gist.js',
+          '<%= test.helpers %>/pager.js',
+          '<%= test.helpers %>/relative.js',
+          '<%= test.helpers %>/eachItems.js',
+          '<%= test.helpers %>/placeholders.js',
+        ],
+        layoutdir: '<%= test.layouts %>'
       },
       // Should render pages with `layout: false` or `layout: none` defined
       no_layout: {
         files: {
-          'test/actual/no_layout/': ['test/fixtures/pages/nolayout/*.hbs']
+          '<%= test.actual %>/no_layout/': ['<%= test.pages %>/nolayout/*.hbs']
         }
       },
       // Should allow Layouts defined in YFM to be defined without an extension.
@@ -56,23 +69,143 @@ module.exports = function (grunt) {
           layoutext: '.hbs'
         },
         files: {
-          'test/actual/layout_ext/': ['test/fixtures/pages/layoutext/layoutext.hbs']
+          '<%= test.actual %>/layout_ext/': ['<%= test.pages %>/layoutext/layoutext.hbs']
+        }
+      },
+      // Should flatten nested layouts
+      nested_layouts: {
+        options: {
+          partials: '<%= test.includes %>/*.hbs',
+          layout: 'one.hbs'
+        },
+        files: {
+          '<%= test.actual %>/nested_layouts/': ['<%= test.pages %>/nested/*.hbs']
         }
       },
       compact: {
         options: {
           targetOpts: 'compact'
         },
-        src: ['test/fixtures/templates/components/alert.hbs', 'test/fixtures/templates/t*.hbs'],
-        dest: 'test/actual/'
+        src: ['<%= test.components %>/alert.hbs', '<%= test.templates %>/t*.hbs'],
+        dest: '<%= test.actual %>/'
       },
+      // Should build a single page, with explicit dest page name defined
+      single_page: {
+        files: {
+          '<%= test.actual %>/single_page.html': ['<%= test.pages %>/example.hbs']
+        }
+      },
+      // Should process and add complex YAML front matter to context
+      yfm: {
+        files: {
+          '<%= test.actual %>/yfm/': ['<%= test.pages %>/yfm/*.hbs']
+        }
+      },
+      // Should process pages no YAML front matter defined
+      noyfm: {
+        files: {
+          '<%= test.actual %>/noyfm/': ['<%= test.pages %>/no-yfm.hbs']
+        }
+      },
+
+      // Should properly calculate relative paths from nested pages
+      // to `assets` directory
+      assets_base: {
+        options: {assets: 'test/assets', assets_base: true},
+        files: {
+          '<%= test.actual %>/assets_base.html': ['test/fixtures/assets_path/assets.hbs']
+        }
+      },
+      // Should properly calculate relative paths from pages to `assets` directory
+      assets_nested: {
+        options: {assets: 'test/assets/nested', assets_nested: true},
+        files: {
+          '<%= test.actual %>/assets_nested.html': ['test/fixtures/assets_path/assets.hbs']
+        }
+      },
+      // Should properly calculate path to `assets` directory when defined
+      // with a trailing slash
+      assets_trailing_slash: {
+        options: {assets: 'test/assets/', assets_trailing_slash: true},
+        files: {
+          '<%= test.actual %>/assets_trailing_slash.html': ['test/fixtures/assets_path/assets.hbs']
+        }
+      },
+      // Should properly calculate path to `assets` directory when the path
+      // begins with `./`
+      assets_dot_slash: {
+        options: {assets: './test/assets', assets_dot_slash: true},
+        files: {
+          '<%= test.actual %>/assets_dot_slash.html': ['test/fixtures/assets_path/assets.hbs']
+        }
+      },
+      // Should properly calculate path to `assets` directory when the
+      // assets path is blank
+      assets_blank_path: {
+        options: {assets: '', assets_blank_path: true},
+        files: {
+          '<%= test.actual %>/assets_blank_path.html': ['test/fixtures/assets_path/assets.hbs']
+        }
+      },
+      // Path construction based on built-in variables
+      // Should automatically calculate relative paths correctly
+      paths: {
+        options: {
+          partials: '<%= test.includes %>/*.hbs',
+        },
+        files: {
+          '<%= test.actual %>/paths/': ['<%= test.pages %>/alert.hbs']
+        }
+      },
+
+      // Pages collections
+      pages_array: {
+        options: {
+          layout: "post.hbs",
+          site: {
+            title: "A Blog",
+            author: "Jon Schlinkert"
+          },
+          pages: '<%= config.pages.one %>'
+        },
+        files: {
+          '<%= test.actual %>/pages_array/': ['<%= test.pages %>/blog/index.hbs']
+        }
+      },
+      pages_object: {
+        options: {
+          layout: 'post.hbs',
+          site: {
+            title: 'Another Blog',
+            author: 'Brian Woodward'
+          },
+          pages: '<%= config.pages.two %>'
+        },
+        files: {
+          '<%= test.actual %>/pages_object/': ['<%= test.pages %>/blog/index.hbs']
+        }
+      },
+      pages_metadata: {
+        options: {
+          layout: 'post.hbs',
+          site: {
+            title: 'Another Blog with Meta',
+            author: 'Brian Woodward'
+          },
+          pages: '<%= config.pages.three %>'
+        },
+        files: {
+          '<%= test.actual %>/pages_metadata/': ['<%= test.pages %>/blog/index.hbs']
+        }
+      },
+
       filesObj: {
         options: {
           targetOpts: 'filesObj'
         },
         files: {
-          'test/actual/alert.html': 'test/fixtures/templates/components/alert.hbs',
-          'test/actual/t.html': ['test/fixtures/templates/t*.hbs']
+          '<%= test.actual %>/alert.html': '<%= test.components %>/alert.hbs',
+          '<%= test.actual %>/t.html': ['<%= test.templates %>/t*.hbs']
         }
       },
       filesArr: {
@@ -82,8 +215,8 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'test/fixtures/templates',
-            dest: 'test/actual/',
+            cwd: '<%= test.templates %>',
+            dest: '<%= test.actual %>/',
             src: '**/*.hbs'
           }
         ]
@@ -91,25 +224,25 @@ module.exports = function (grunt) {
       baz: {
         options: {
           targetOpts: 'baz',
-          partials: ['test/fixtures/partials/**/*.hbs']
+          partials: ['<%= test.includes %>/**/*.hbs']
         },
         files: [
           {
             expand: true,
-            cwd: 'test/fixtures/templates/components',
-            dest: 'test/actual/',
+            cwd: '<%= test.components %>',
+            dest: '<%= test.actual %>/',
             src: 'alert.hbs'
           },
           {
             expand: true,
-            cwd: 'test/fixtures/templates',
-            dest: 'test/actual/',
+            cwd: '<%= test.templates %>',
+            dest: '<%= test.actual %>/',
             src: 'two.hbs'
           },
           {
             expand: true,
-            cwd: 'test/fixtures/templates',
-            dest: 'test/actual/',
+            cwd: '<%= test.templates %>',
+            dest: '<%= test.actual %>/',
             src: 'three.hbs'
           }
         ]
@@ -124,186 +257,85 @@ module.exports = function (grunt) {
     'assemble-regression': {
       options: {
         assets: 'test/assets',
-        helpers: ['test/helpers/*.js'],
+        helpers: ['test/_helpers/*.js'],
         layoutdir: 'test/fixtures/layouts',
         layout: 'default.hbs',
         flatten: true
       },
 
-      // Should flatten nested layouts
-      nested_layouts: {
-        options: {
-          partials: 'test/fixtures/partials/*.hbs',
-          data: 'test/fixtures/data/*.{json,yml}',
-          layout: 'one.hbs'
-        },
-        files: {
-          'test/actual/nested_layouts/': ['test/fixtures/pages/nested/*.hbs']
-        }
-      },
+
       // Should register locally-defined custom helpers
       custom_helpers: {
         options: {
-          helpers: ['test/helpers/*.js'],
+          helpers: ['test/_helpers/*.js'],
           // name: '<%= pkg.name %>'
         },
         files: {
-          'test/actual/custom_helpers/': ['test/fixtures/helpers/{foo,bar,opt}.hbs']
+          '<%= test.actual %>/custom_helpers/': ['test/fixtures/helpers/{foo,bar,opt}.hbs']
         }
       },
       // Should register and use custom plugins, without a stage defined
       plugin_untitled: {
         options: {
-          plugins: ['./test/plugins/untitled.js']
+          plugins: ['./test/_plugins/untitled.js']
         },
         files: {
-          'test/actual/plugin_untitled.html': 'test/fixtures/plugins/untitled.hbs'
+          '<%= test.actual %>/plugin_untitled.html': 'test/fixtures/plugins/untitled.hbs'
         }
       },
       // Should use custom plugins with 'render:pre:pages' stage defined
       plugin_before: {
         options: {
-          plugins: ['./test/plugins/plugin_before.js']
+          plugins: ['./test/_plugins/plugin_before.js']
         },
         files: {
-          'test/actual/plugin_before.html': 'test/fixtures/plugins/before.hbs'
+          '<%= test.actual %>/plugin_before.html': 'test/fixtures/plugins/before.hbs'
         }
       },
       // Should use custom plugins with 'render:post:pages' stage defined
       plugin_after: {
         options: {
-          plugins: ['./test/plugins/plugin_after.js']
+          plugins: ['./test/_plugins/plugin_after.js']
         },
         files: {
-          'test/actual/plugin_after.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/plugin_after.html': 'test/fixtures/plugins/after.hbs'
         }
       },
       // Should use custom plugins with 'render:pre:page' stage defined
       plugin_pre_page: {
         options: {
-          plugins: ['./test/plugins/plugin_pre_page.js']
+          plugins: ['./test/_plugins/plugin_pre_page.js']
         },
         files: {
-          'test/actual/plugin_pre_page.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/plugin_pre_page.html': 'test/fixtures/plugins/after.hbs'
         }
       },
       // Should do nothing for a non-existant plugin
       plugin_none: {
         options: {
-          plugins: ['./test/plugins/not_real.js']
+          plugins: ['./test/_plugins/not_real.js']
         },
         files: {
-          'test/actual/not_real.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/not_real.html': 'test/fixtures/plugins/after.hbs'
         }
       },
+
       // should add isCurrentPage and relativeLink to each page
       // in the pages collection
       plugin_preprocess_page_collection: {
         options: {
-          partials: 'test/fixtures/partials/*.hbs',
-          data: 'test/fixtures/data/*.{json,yml}',
+          partials: '<%= test.includes %>/*.hbs',
           layout: 'preprocess.hbs',
           pageCollection: {
-            preprocess: require('./test/plugins/page_collection_preprocessing.js')
+            preprocess: require('./test/_plugins/page_collection_preprocessing.js')
           }
         },
         files: {
-          'test/actual/plugin_preprocess/': ['test/fixtures/pages/*.hbs']
+          '<%= test.actual %>/plugin_preprocess/': ['<%= test.pages %>/*.hbs']
         }
       },
-      // Path construction based on built-in variables
-      // Should automatically calculate relative paths correctly
-      paths: {
-        options: {
-          partials: 'test/fixtures/partials/*.hbs',
-          data: 'test/fixtures/data/*.{json,yml}'
-        },
-        files: {
-          'test/actual/paths/': ['test/fixtures/pages/*.hbs']
-        }
-      },
-      // Should post-process content using a custom function
-      postprocess: {
-        options: {
-          postprocess: function(src) {
-            return require('frep').strWithArr(src, grunt.config.process('<%= translation.patterns %>'));
-          }
-        },
-        files: {
-          'test/actual/postprocess.html': ['test/fixtures/pages/postprocess/postprocess.hbs']
-        }
-      },
-      // Should post-process content using a custom function
-      postprocess2: {
-        options: {
-        },
-        files: {
-          'test/actual/postprocess2.html': ['test/fixtures/pages/postprocess/postprocess2.hbs']
-        }
-      },
-      // Should build a single page, with explicit dest page name defined
-      single_page: {
-        files: {
-          'test/actual/single_page.html': ['test/fixtures/pages/example.hbs']
-        }
-      },
-      // Should process and add complex YAML front matter to context
-      yfm: {
-        options: {
-          data: 'test/fixtures/data/*.{json,yml}'
-        },
-        files: {
-          'test/actual/yfm/': ['test/fixtures/pages/yfm/*.hbs']
-        }
-      },
-      // Should process pages no YAML front matter defined
-      noyfm: {
-        options: {
-          data: 'test/fixtures/data/*.{json,yml}'
-        },
-        files: {
-          'test/actual/noyfm/': ['test/fixtures/pages/no-yfm.hbs']
-        }
-      },
-      // Should properly calculate relative paths from nested pages
-      // to `assets` directory
-      assets_base: {
-        options: {assets: 'test/assets', assets_base: true},
-        files: {
-          'test/actual/assets_base.html': ['test/fixtures/assets_path/assets.hbs']
-        }
-      },
-      // Should properly calculate relative paths from pages to `assets` directory
-      assets_nested: {
-        options: {assets: 'test/assets/nested', assets_nested: true},
-        files: {
-          'test/actual/assets_nested.html': ['test/fixtures/assets_path/assets.hbs']
-        }
-      },
-      // Should properly calculate path to `assets` directory when defined
-      // with a trailing slash
-      assets_trailing_slash: {
-        options: {assets: 'test/assets/', assets_trailing_slash: true},
-        files: {
-          'test/actual/assets_trailing_slash.html': ['test/fixtures/assets_path/assets.hbs']
-        }
-      },
-      // Should properly calculate path to `assets` directory when the path
-      // begins with `./`
-      assets_dot_slash: {
-        options: {assets: './test/assets', assets_dot_slash: true},
-        files: {
-          'test/actual/assets_dot_slash.html': ['test/fixtures/assets_path/assets.hbs']
-        }
-      },
-      // Should properly calculate path to `assets` directory when the
-      // assets path is blank
-      assets_blank_path: {
-        options: {assets: '', assets_blank_path: true},
-        files: {
-          'test/actual/assets_blank_path.html': ['test/fixtures/assets_path/assets.hbs']
-        }
-      },
+
+
       // Should add collections to context, sorted in descending order.
       collections_desc: {
         options: {
@@ -314,7 +346,7 @@ module.exports = function (grunt) {
           ]
         },
         files: {
-          'test/actual/collections/desc/': ['test/fixtures/pages/*.hbs']
+          '<%= test.actual %>/collections/desc/': ['<%= test.pages %>/*.hbs']
         }
       },
       // Should add collections to context, sorted in ascending order.
@@ -327,7 +359,7 @@ module.exports = function (grunt) {
           ]
         },
         files: {
-          'test/actual/collections/asc/': ['test/fixtures/pages/*.hbs']
+          '<%= test.actual %>/collections/asc/': ['<%= test.pages %>/*.hbs']
         }
       },
       // Should
@@ -338,7 +370,7 @@ module.exports = function (grunt) {
           ]
         },
         files: {
-          'test/actual/collections/custom/': ['test/fixtures/pages/*.hbs']
+          '<%= test.actual %>/collections/custom/': ['<%= test.pages %>/*.hbs']
         }
       },
       // Should add complex collections and related pages to context
@@ -347,47 +379,7 @@ module.exports = function (grunt) {
           data: ['test/fixtures/data/collections/*.json']
         },
         files: {
-          'test/actual/collections/complex/': ['test/fixtures/pages/*.hbs']
-        }
-      },
-      // Pages collections
-      pages_array: {
-        options: {
-          layout: "post.hbs",
-          site: {
-            title: "A Blog",
-            author: "Jon Schlinkert"
-          },
-          pages: '<%= config.pages.one %>'
-        },
-        files: {
-          'test/actual/pages_array/': ['test/fixtures/pages/blog/index.hbs']
-        }
-      },
-      pages_object: {
-        options: {
-          layout: 'post.hbs',
-          site: {
-            title: 'Another Blog',
-            author: 'Brian Woodward'
-          },
-          pages: '<%= config.pages.two %>'
-        },
-        files: {
-          'test/actual/pages_object/': ['test/fixtures/pages/blog/index.hbs']
-        }
-      },
-      pages_metadata: {
-        options: {
-          layout: 'post.hbs',
-          site: {
-            title: 'Another Blog with Meta',
-            author: 'Brian Woodward'
-          },
-          pages: '<%= config.pages.three %>'
-        },
-        files: {
-          'test/actual/pages_metadata/': ['test/fixtures/pages/blog/index.hbs']
+          '<%= test.actual %>/collections/complex/': ['<%= test.pages %>/*.hbs']
         }
       }
     },
@@ -397,7 +389,7 @@ module.exports = function (grunt) {
      * remove files from the previous build
      */
     clean: {
-      tests: ['test/actual/**/*']
+      tests: ['<%= test.actual %>/**/*']
     },
 
     /**

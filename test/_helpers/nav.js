@@ -3,19 +3,19 @@
  * Copyright (c) 2013 Jon Schlinkert
  * Licensed under the MIT License (MIT).
  */
-
-var _     = require('lodash');
+var _ = require('lodash');
 
 // Export helpers
-module.exports.register = function (Handlebars, options) {
-  'use strict';
+module.exports.register = function (config) {
+  var Handlebars = config.Handlebars;
 
-  var opts = options || {};
+  var opts = {};
+  var helpers = {};
 
   /**
    * {{nav}}
    */
-  exports.nav = function(context, options) {
+  helpers.nav = function(context, options) {
     options = options || {};
     options.hash = options.hash || {};
     context = _.extend({modifier: ''}, context, opts.data, this, options.hash);
@@ -71,9 +71,5 @@ module.exports.register = function (Handlebars, options) {
     return new Handlebars.SafeString(Handlebars.compile(template)(context));
   };
 
-  for (var helper in exports) {
-    if (exports.hasOwnProperty(helper)) {
-      Handlebars.registerHelper(helper, exports[helper]);
-    }
-  }
+  return helpers;
 };

@@ -55,6 +55,7 @@ tags:
       {{#if pages}}
         {{#each pages}}
           <li{{#is ../../../page.dest dest}} class="active"{{/is}}>
+  {{log this}}
             <a href="{{relative ../../../page.dest dest}}">{{{filename}}}</a>
           </li>
         {{/each}}

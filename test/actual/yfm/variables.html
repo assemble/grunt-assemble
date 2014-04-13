@@ -1,0 +1,21 @@
+
+<div class="page-header">
+  <h4>YAML Variables</h4>
+</div>
+
+This is an example YAML variable. Variables need to be the first thing in the line. If it shows up in the result, it worked!
+
+<p>This would output the variable as literal text.</p>
+<pre><code class="undefinedyaml">three: But this doesn&#39;t work. *DOOWB
+</code></pre>
+<p>And this would throw an error:</p>
+<pre><code class="undefinedyaml">three: *DOOWB But this doesn&#39;t work.
+</code></pre>
+<p>YAML supports <strong>variables</strong>, or <strong>repeated nodes</strong>. The simplest explanation is that you define something as a variable by preceding it with &quot;&amp;NAME value&quot; and you can refer to it with &quot;*NAME&quot; e.g.:</p>
+<pre><code class="undefinedyaml"># YAML
+some_thing: &amp;NAME foobar
+other_thing: *NAME
+</code></pre>
+<p>Parses to:</p>
+<pre><code class="undefinedjson">{&quot;other_thing&quot;: &quot;foobar&quot;, &quot;some_thing&quot;: &quot;foobar&quot;}
+</code></pre>
