@@ -1,10 +1,14 @@
+---
+author: Jon Schlinkert, Brian Woodward
+---
 # {%= name %} [![NPM version](https://badge.fury.io/js/{%= name %}.png)](http://badge.fury.io/js/{%= name %}) {% if (travis) { %} [![Build Status]({%= travis %}.png)]({%= travis %}){% } %}
 
 > {%= description %}
 
-### [Visit the website →](http://assemble.io)
+## WARNING!!!
+{%= docs("warning") %}
 
-{%= _.doc("warning.md") %}
+### [Visit the website →](http://assemble.io)
 
 ## Why use Assemble?
 
@@ -21,30 +25,31 @@
 ## The "assemble" task
 
 ### Getting Started
-{%= _.doc("getting-started.md") %}
+{%= docs("getting-started") %}
 
 ### Options
-{%= _.doc("options.md") %}
+{%= docs("options") %}
 
 ### Usage Examples
-{%= _.doc("examples.md") %}
+{%= docs("examples") %}
 
 ## Contributing
-{%= _.contrib("contributing.md") %}
+{%= contrib("contributing") %}
 
 ## Assemble plugins
-{%= _.include("related-repos-list.md") %}
+{%= include("assemble/repos-list") %}
 
 ## Authors
-{%= _.contrib("authors.md") %}
+{%= contrib("authors") %}
 
 ## Release History
-{%= _.include("release-history.md") %}
+{%= changelog() %}
 
 ## License
-{%= copyright %}
-{%= license %}
+{%= copyright() %}
+{%= license() %}
+
 
 ***
 
-{%= _.include("footer.md") %}
+{%= include("footer") %}
