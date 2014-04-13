@@ -4,14 +4,11 @@
  * Licensed under the MIT License (MIT).
  */
 
-// Node.js
-var path = require('path');
-var fs = require('fs');
 var _ = require('lodash');
 
 
 // Export helpers
-module.exports.register = function (Handlebars, options, params) {
+module.exports.register = function (Handlebars, options) {
   'use strict';
 
   var opts = options || {};
