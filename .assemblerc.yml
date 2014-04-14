@@ -45,7 +45,7 @@ templates:    <%= test.fixtures %>/templates
 pages:        <%= test.fixtures %>/pages
 
 # partials
-components:   <%= test.fixtures %>/components
+components:   <%= test.templates %>/components
 includes:     <%= test.fixtures %>/includes
 snippets:     <%= test.fixtures %>/snippets
 

@@ -204,7 +204,7 @@ module.exports = function (grunt) {
           targetOpts: 'filesObj'
         },
         files: {
-          '<%= test.actual %>/alert.html': '<%= test.components %>/alert.hbs',
+          '<%= test.actual %>/alert.html': '<%= test.compoents %>/alert.hbs',
           '<%= test.actual %>/t.html': ['<%= test.templates %>/t*.hbs']
         }
       },

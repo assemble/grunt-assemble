@@ -5,11 +5,11 @@
  * Licensed under the MIT license.
  */
 
-var path = require('path');
+//var path = require('path');
 var file = require('fs-utils');
 var async = require('async');
 var assemble = require('assemble');
-var _str = require('underscore.string');
+//var _str = require('underscore.string');
 var _ = require('lodash');
 var normalize = require('../lib/normalize');
 
@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     grunt.log.writeln(); // empty line
 
     // Store Grunt's original config data
-    var originalConfig = _.cloneDeep(grunt.config.data);
+    //var originalConfig = _.cloneDeep(grunt.config.data);
 
     // normalize grunt options data into assemble metadata
     var options = normalizeOptions(grunt, this, assemble.defaults);
@@ -45,24 +45,24 @@ module.exports = function (grunt) {
       options.grunt = grunt;
 
       // mix methods from underscore.string into lodash.
-      _.mixin(_str);
+      //_.mixin(_str);
 
       // Enable mixins to be registered from the options Currently this is set
       // to options.utils since options.mixins used by boson and doesn't work.
-      var mixins = file.expand(options.utils || []);
-      if (mixins.length > 0) {
-        mixins.forEach(function(name) {
-          // Try as a npm module
-          try {
-            _.mixin(name);
-          } catch(err) {
-            // Try as a local file
-            try {
-              _.mixin(require(path.resolve(name)));
-            } catch(err) {}
-          }
-        });
-      }
+      //var mixins = file.expand(options.utils || []);
+      //if (mixins.length > 0) {
+      //  mixins.forEach(function(name) {
+      //    // Try as a npm module
+      //    try {
+      //      _.mixin(name);
+      //    } catch(err) {
+      //      // Try as a local file
+      //      try {
+      //        _.mixin(require(path.resolve(name)));
+      //      } catch(err) {}
+      //    }
+      //  });
+      //}
 
       // if there are command line options set, use those
       options.log = options.log || {};
@@ -75,10 +75,10 @@ module.exports = function (grunt) {
       };
 
       // Build up the context with config data
-      processContext();
+      //processContext();
 
       // Restore Grunt's config data.
-      grunt.config.data = originalConfig;
+      //grunt.config.data = originalConfig;
 
       // configure assemble and build
       assemble(assembleOptions).build(function (err, results) {
@@ -110,10 +110,10 @@ module.exports = function (grunt) {
     });
   });
 
-  var processContext = function(context, data) {
-    _.extend(grunt.config.data, context, data);
-    return grunt.config.process(data || context);
-  };
+  //var processContext = function(context, data) {
+  //  _.extend(grunt.config.data, context, data);
+  //  return grunt.config.process(data || context);
+  //};
 
   var mergeOptions = function (name, grunt) {
     var task = grunt.task.current;
