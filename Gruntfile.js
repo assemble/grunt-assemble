@@ -46,7 +46,7 @@ module.exports = function (grunt) {
         config: '<%= config %>',
 
         taskOpts: 'something',
-        assets: '<%= test.public %>',
+        assets: '<%= test.assets %>',
         helpers: [
           '<%= test.helpers %>/gist.js',
           '<%= test.helpers %>/pager.js',

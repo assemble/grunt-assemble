@@ -33,15 +33,15 @@ module.exports = function (grunt) {
     // normalize grunt options data into assemble metadata
     var options = normalizeOptions(grunt, this, assemble.defaults);
 
-    // normalize grunt files object into assemble components
-    normalize.files(this, function (err, components) {
+    // normalize grunt files object into assemble pages
+    normalize.files(this, function (err, pages) {
 
       if (err) {
         grunt.warn(err);
         return done(false);
       }
 
-      options.components = components;
+      options.pages = pages;
       options.grunt = grunt;
 
       // mix methods from underscore.string into lodash.
@@ -88,20 +88,20 @@ module.exports = function (grunt) {
           done(false);
         }
 
-        // write out the resulting components
-        var keys = _.keys(results.components);
+        // write out the resulting pages
+        var keys = _.keys(results.pages);
 
-        async.each(keys, function (key, nextComponent) {
-          var component = results.components[key];
-          grunt.log.writeln('  writing'.green, component.dest);
+        async.each(keys, function (key, nextPage) {
+          var page = results.pages[key];
+          grunt.log.writeln('  writing'.green, page.dest);
 
           if (options.debug) {
-            grunt.verbose.writeln(component);
-            file.writeFileSync(options.debug || 'tmp/debug-component.json', component);
+            grunt.verbose.writeln(page);
+            file.writeFileSync(options.debug || 'tmp/debug-paeg.json', page);
           }
 
-          file.writeFileSync(component.dest, component.content);
-          nextComponent();
+          file.writeFileSync(page.dest, page.content);
+          nextPage();
         }, done);
 
         grunt.verbose.writeln(); // empty spacer in verbose mode

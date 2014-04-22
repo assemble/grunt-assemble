@@ -19,7 +19,7 @@ utils:        <%= test.data %>/_lib
 mixins:       <%= test.data %>/_lib
 
 # Assets > fonts, icons, images etc.
-assets:       assets
+assets:       test/assets
 images:       <%= test.assets %>/images
 fonts:        <%= test.assets %>/fonts
 
