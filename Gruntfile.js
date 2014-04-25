@@ -159,45 +159,46 @@ module.exports = function (grunt) {
       },
 
       // Pages collections
-      pages_array: {
-        options: {
-          layout: "post.hbs",
-          site: {
-            title: "A Blog",
-            author: "Jon Schlinkert"
-          },
-          pages: '<%= config.pages.one %>'
-        },
-        files: {
-          '<%= test.actual %>/pages_array/': ['<%= test.pages %>/blog/index.hbs']
-        }
-      },
-      pages_object: {
-        options: {
-          layout: 'post.hbs',
-          site: {
-            title: 'Another Blog',
-            author: 'Brian Woodward'
-          },
-          pages: '<%= config.pages.two %>'
-        },
-        files: {
-          '<%= test.actual %>/pages_object/': ['<%= test.pages %>/blog/index.hbs']
-        }
-      },
-      pages_metadata: {
-        options: {
-          layout: 'post.hbs',
-          site: {
-            title: 'Another Blog with Meta',
-            author: 'Brian Woodward'
-          },
-          pages: '<%= config.pages.three %>'
-        },
-        files: {
-          '<%= test.actual %>/pages_metadata/': ['<%= test.pages %>/blog/index.hbs']
-        }
-      },
+      // Removing pages collections until the spec for pages is specified
+      //pages_array: {
+      //  options: {
+      //    layout: "post.hbs",
+      //    site: {
+      //      title: "A Blog",
+      //      author: "Jon Schlinkert"
+      //    },
+      //    pages: '<%= config.pages.one %>'
+      //  },
+      //  files: {
+      //    '<%= test.actual %>/pages_array/': ['<%= test.pages %>/blog/index.hbs']
+      //  }
+      //},
+      //pages_object: {
+      //  options: {
+      //    layout: 'post.hbs',
+      //    site: {
+      //      title: 'Another Blog',
+      //      author: 'Brian Woodward'
+      //    },
+      //    pages: '<%= config.pages.two %>'
+      //  },
+      //  files: {
+      //    '<%= test.actual %>/pages_object/': ['<%= test.pages %>/blog/index.hbs']
+      //  }
+      //},
+      //pages_metadata: {
+      //  options: {
+      //    layout: 'post.hbs',
+      //    site: {
+      //      title: 'Another Blog with Meta',
+      //      author: 'Brian Woodward'
+      //    },
+      //    pages: '<%= config.pages.three %>'
+      //  },
+      //  files: {
+      //    '<%= test.actual %>/pages_metadata/': ['<%= test.pages %>/blog/index.hbs']
+      //  }
+      //},
 
       filesObj: {
         options: {
