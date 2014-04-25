@@ -22,7 +22,6 @@ module.exports = function (grunt) {
 
   grunt.registerMultiTask('assemble', 'Compile template files with specified engines', function () {
 
-    var self = this;
     var done = this.async();
 
     grunt.log.writeln(); // empty line
@@ -33,15 +32,15 @@ module.exports = function (grunt) {
     // normalize grunt options data into assemble metadata
     var options = normalizeOptions(grunt, this, assemble.defaults);
 
-    // normalize grunt files object into assemble pages
-    normalize.files(this, function (err, pages) {
+    // normalize grunt files object into assemble files
+    normalize.files(this, function (err, files) {
 
       if (err) {
         grunt.warn(err);
         return done(false);
       }
 
-      options.pages = pages;
+      options.files = files;
       options.grunt = grunt;
 
       // mix methods from underscore.string into lodash.
@@ -68,12 +67,6 @@ module.exports = function (grunt) {
       options.log = options.log || {};
       options.log.level = logOpts || options.log.level || 'error';
 
-      // build the assemble options object
-      var assembleOptions = {
-        name: self.target,
-        metadata: options
-      };
-
       // Build up the context with config data
       //processContext();
 
@@ -81,7 +74,7 @@ module.exports = function (grunt) {
       //grunt.config.data = originalConfig;
 
       // configure assemble and build
-      assemble(assembleOptions).build(function (err, results) {
+      assemble(options).build(function (err, results) {
 
         if (err) {
           grunt.warn(err);
@@ -97,7 +90,7 @@ module.exports = function (grunt) {
 
           if (options.debug) {
             grunt.verbose.writeln(page);
-            file.writeFileSync(options.debug || 'tmp/debug-paeg.json', page);
+            file.writeFileSync(options.debug || 'tmp/debug-page.json', page);
           }
 
           file.writeFileSync(page.dest, page.content);
