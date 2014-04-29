@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     //var originalConfig = _.cloneDeep(grunt.config.data);
 
     // normalize grunt options data into assemble metadata
-    var options = normalizeOptions(grunt, this, assemble.defaults);
+    var config = normalizeOptions(grunt, this, assemble.defaults);
 
     // normalize grunt files object into assemble files
     normalize.files(this, function (err, files) {
@@ -40,8 +40,8 @@ module.exports = function (grunt) {
         return done(false);
       }
 
-      options.files = files;
-      options.grunt = grunt;
+      config.files = files;
+      config.grunt = grunt;
 
       // mix methods from underscore.string into lodash.
       //_.mixin(_str);
@@ -64,8 +64,8 @@ module.exports = function (grunt) {
       //}
 
       // if there are command line options set, use those
-      options.log = options.log || {};
-      options.log.level = logOpts || options.log.level || 'error';
+      config.log = config.log || {};
+      config.log.level = logOpts || config.log.level || 'error';
 
       // Build up the context with config data
       //processContext();
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
       //grunt.config.data = originalConfig;
 
       // configure assemble and build
-      assemble(options).build(function (err, results) {
+      assemble(config).build(function (err, results) {
 
         if (err) {
           grunt.warn(err);
@@ -88,9 +88,9 @@ module.exports = function (grunt) {
           var page = results.pages[key];
           grunt.log.writeln('  writing'.green, page.dest);
 
-          if (options.debug) {
+          if (config.debug) {
             grunt.verbose.writeln(page);
-            file.writeFileSync(options.debug || 'tmp/debug-page.json', page);
+            file.writeFileSync(config.debug || 'tmp/debug-page.json', page);
           }
 
           file.writeFileSync(page.dest, page.content);
