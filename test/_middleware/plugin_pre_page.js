@@ -7,14 +7,17 @@
  */
 
 
-var plugin = function(params, next) {
-  params.context.page.page = "W00T!!!";
-  next();
-};
+module.exports = function (assemble) {
 
-// export options
-plugin.options = {
-  stage: 'render:pre:page'
-};
+  var middleware = function(params, next) {
+    params.page.content = "W00T!!!";
+    next();
+  };
 
-module.exports = plugin;
+  // export options
+  middleware.event = 'render:pre:page';
+
+  return {
+    'test-middleware': middleware
+  };
+};
