@@ -275,64 +275,64 @@ module.exports = function (grunt) {
           '<%= test.actual %>/custom_helpers/': ['test/fixtures/helpers/{foo,bar,opt}.hbs']
         }
       },
-      // Should register and use custom plugins, without a stage defined
-      plugin_untitled: {
+      // Should register and use custom middleware, without a stage defined
+      middleware_untitled: {
         options: {
-          plugins: ['./test/_plugins/untitled.js']
+          middleware: ['./test/_middleware/untitled.js']
         },
         files: {
-          '<%= test.actual %>/plugin_untitled.html': 'test/fixtures/plugins/untitled.hbs'
+          '<%= test.actual %>/middleware_untitled.html': 'test/fixtures/middleware/untitled.hbs'
         }
       },
-      // Should use custom plugins with 'render:pre:pages' stage defined
-      plugin_before: {
+      // Should use custom middleware with 'render:pre:pages' stage defined
+      middleware_before: {
         options: {
-          plugins: ['./test/_plugins/plugin_before.js']
+          middleware: ['./test/_middleware/middleware_before.js']
         },
         files: {
-          '<%= test.actual %>/plugin_before.html': 'test/fixtures/plugins/before.hbs'
+          '<%= test.actual %>/middleware_before.html': 'test/fixtures/middleware/before.hbs'
         }
       },
-      // Should use custom plugins with 'render:post:pages' stage defined
-      plugin_after: {
+      // Should use custom middleware with 'render:post:pages' stage defined
+      middleware_after: {
         options: {
-          plugins: ['./test/_plugins/plugin_after.js']
+          middleware: ['./test/_middleware/middleware_after.js']
         },
         files: {
-          '<%= test.actual %>/plugin_after.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/middleware_after.html': 'test/fixtures/middleware/after.hbs'
         }
       },
-      // Should use custom plugins with 'render:pre:page' stage defined
-      plugin_pre_page: {
+      // Should use custom middleware with 'render:pre:page' stage defined
+      middleware_pre_page: {
         options: {
-          plugins: ['./test/_plugins/plugin_pre_page.js']
+          middleware: ['./test/_middleware/middleware_pre_page.js']
         },
         files: {
-          '<%= test.actual %>/plugin_pre_page.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/middleware_pre_page.html': 'test/fixtures/middleware/after.hbs'
         }
       },
-      // Should do nothing for a non-existant plugin
-      plugin_none: {
+      // Should do nothing for a non-existant middleware
+      middleware_none: {
         options: {
-          plugins: ['./test/_plugins/not_real.js']
+          middleware: ['./test/_middleware/not_real.js']
         },
         files: {
-          '<%= test.actual %>/not_real.html': 'test/fixtures/plugins/after.hbs'
+          '<%= test.actual %>/not_real.html': 'test/fixtures/middleware/after.hbs'
         }
       },
 
       // should add isCurrentPage and relativeLink to each page
       // in the pages collection
-      plugin_preprocess_page_collection: {
+      middleware_preprocess_page_collection: {
         options: {
           partials: '<%= test.includes %>/*.hbs',
           layout: 'preprocess.hbs',
           pageCollection: {
-            preprocess: require('./test/_plugins/page_collection_preprocessing.js')
+            preprocess: require('./test/_middleware/page_collection_preprocessing.js')
           }
         },
         files: {
-          '<%= test.actual %>/plugin_preprocess/': ['<%= test.pages %>/*.hbs']
+          '<%= test.actual %>/middleware_preprocess/': ['<%= test.pages %>/*.hbs']
         }
       },
 
