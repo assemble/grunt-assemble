@@ -25,14 +25,6 @@ module.exports = function (grunt) {
       files: ['Gruntfile.js', 'lib/*.js', 'tasks/*.js', 'test/*.js']
     },
 
-    // Run mocha unit tests.
-    mochaTest: {
-      tests: {
-        options: {reporter: 'spec'},
-        src: ['test/*.js']
-      }
-    },
-
     // Example config data for "pages_array" and "pages_object" targets
     component: {
       one: "alert"
@@ -412,7 +404,7 @@ module.exports = function (grunt) {
   grunt.loadTasks('tasks');
 
   // Tests to be run.
-  grunt.registerTask('test', ['assemble', 'mochaTest']);
+  grunt.registerTask('test', ['assemble']);
 
   // Dev task.
   grunt.registerTask('dev', ['jshint', 'test', 'watch']);

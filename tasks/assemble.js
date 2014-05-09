@@ -26,9 +26,6 @@ module.exports = function (grunt) {
 
     grunt.log.writeln(); // empty line
 
-    // Store Grunt's original config data
-    //var originalConfig = _.cloneDeep(grunt.config.data);
-
     // normalize grunt options data into assemble metadata
     var config = normalizeOptions(grunt, this, assemble.defaults);
 
@@ -43,35 +40,9 @@ module.exports = function (grunt) {
       config.files = files;
       config.grunt = grunt;
 
-      // mix methods from underscore.string into lodash.
-      //_.mixin(_str);
-
-      // Enable mixins to be registered from the options Currently this is set
-      // to options.utils since options.mixins used by boson and doesn't work.
-      //var mixins = file.expand(options.utils || []);
-      //if (mixins.length > 0) {
-      //  mixins.forEach(function(name) {
-      //    // Try as a npm module
-      //    try {
-      //      _.mixin(name);
-      //    } catch(err) {
-      //      // Try as a local file
-      //      try {
-      //        _.mixin(require(path.resolve(name)));
-      //      } catch(err) {}
-      //    }
-      //  });
-      //}
-
       // if there are command line options set, use those
       config.log = config.log || {};
       config.log.level = logOpts || config.log.level || 'error';
-
-      // Build up the context with config data
-      //processContext();
-
-      // Restore Grunt's config data.
-      //grunt.config.data = originalConfig;
 
       // configure assemble and build
       assemble(config).build(function (err, results) {
@@ -102,11 +73,6 @@ module.exports = function (grunt) {
       });
     });
   });
-
-  //var processContext = function(context, data) {
-  //  _.extend(grunt.config.data, context, data);
-  //  return grunt.config.process(data || context);
-  //};
 
   var mergeOptions = function (name, grunt) {
     var task = grunt.task.current;
