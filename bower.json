@@ -1,6 +1,6 @@
 {
-  "name": "assemble",
-  "version": "0.4.41",
+  "name": "grunt-assemble",
+  "version": "0.4.42",
   "main": [
     "./lib/assemble"
   ]
