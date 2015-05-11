@@ -23,10 +23,9 @@ describe('Loading default handlebars engine', function() {
   it('compiles a handlebars template', function(done) {
     var engine = assembleEngine.load('handlebars');
     var template;
-    engine.compile('{{foo}}', null, function(err, tmpl) {
+    engine.compile('{{foo}}', {}, function(err, tmpl) {
       if(err) {
-        console.log('error:', err);
-        done(false);
+        return done(err);
       }
       template = tmpl;
       done();
@@ -36,15 +35,13 @@ describe('Loading default handlebars engine', function() {
   it('renders a template', function(done) {
     var engine = assembleEngine.load('handlebars');
     var expected = 'bar';
-    engine.compile('{{baz}}', null, function(err, tmpl) {
+    engine.compile('{{baz}}', {}, function(err, tmpl) {
       if(err) {
-        console.log('error:', err);
-        done(false);
+        return done(err);
       }
       engine.render(tmpl, {baz: 'bar'}, function(err, content) {
         if(err) {
-          console.log('error:', err);
-          done(false);
+          return done(err);
         }
         expect(content).to.equal(expected);
         done();
@@ -56,15 +53,13 @@ describe('Loading default handlebars engine', function() {
 
     var runTest = function(engine, done) {
       var expected = '<!-- foo -->\n<!-- bar -->';
-      engine.compile("{{{bar 'bar'}}}", null, function(err, tmpl) {
+      engine.compile("{{{bar 'bar'}}}", {}, function(err, tmpl) {
         if(err) {
-          console.log('error:', err);
-          done(false);
+          return done(err);
         }
         engine.render(tmpl, {}, function(err, content) {
           if(err) {
-            console.log('error:', err);
-            done(false);
+            return done(err);
           }
           expect(content).to.equal(expected);
           done();
@@ -94,15 +89,13 @@ describe('Loading default handlebars engine', function() {
       engine.init({helpers: './test/helpers/*.js'}, pluginParams);
       var expected = '<!-- bar -->';
 
-      engine.compile("{{{foo 'bar'}}}", null, function(err, tmpl) {
+      engine.compile("{{{foo 'bar'}}}", {}, function(err, tmpl) {
         if(err) {
-          console.log('error:', err);
-          done(false);
+          return done(err);
         }
         engine.render(tmpl, {}, function(err, content) {
           if(err) {
-            console.log('error:', err);
-            done(false);
+            return done(err);
           }
           expect(content).to.equal(expected);
           done();
