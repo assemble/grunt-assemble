@@ -118,7 +118,7 @@ module.exports = function(grunt) {
           }
 
           // get the data
-          var parsedPartial = matter(partial);
+          var parsedPartial = matter(partial, assemble.options.matter);
           assemble.options.data[filename] = _.extend({}, parsedPartial.data || {}, assemble.options.data[filename] || {});
 
           // register the partial
@@ -280,7 +280,7 @@ module.exports = function(grunt) {
                   page = '{{!}}';
                 }
 
-                var parsedPage = matter(page);
+                var parsedPage = matter(page, assemble.options.matter);
                 pageContext = useFileInfo ? (fileInfo.data || fileInfo.metadata || {}) : parsedPage.data;
 
                 // Page object
@@ -652,7 +652,7 @@ module.exports = function(grunt) {
         layout = layout.replace(/\{{>\s*body\s*}}/, defaultLayout);
       }
 
-      var parsedLayout = matter(layout);
+      var parsedLayout = matter(layout, assemble.options.matter);
       var layoutData = parsedLayout.data;
 
       var results = {
