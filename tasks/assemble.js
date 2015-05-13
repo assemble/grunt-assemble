@@ -649,7 +649,7 @@ module.exports = function(grunt) {
         layoutName = path.basename(layout, path.extname(layout));
 
         layout = grunt.file.read(layout);
-        layout = layout.replace(/\{{>\s*body\s*}}/, defaultLayout);
+        layout = layout.replace(/\{{>\s*body\s*}}/, function () { return defaultLayout; });
       }
 
       var parsedLayout = matter(layout, assemble.options.matter);
@@ -697,7 +697,7 @@ module.exports = function(grunt) {
    * @return {String}         The raw, assembled, uncompiled and unprocessed page
    */
   var injectBody = function(layout, body) {
-    return layout.replace(assemble.engine.bodyRegex, body);
+    return layout.replace(assemble.engine.bodyRegex, function () { return body; });
   };
 
 };
