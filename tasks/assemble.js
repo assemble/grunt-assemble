@@ -57,6 +57,17 @@ module.exports = function(grunt) {
         assemble.options.data = {};
       }
 
+      // Expand layout into layoutFiles if a glob pattern is specified
+      if(assemble.options.layouts) {
+        assemble.layoutFiles = file.expand({filter: 'isFile'}, assemble.options.layouts);
+      }
+
+      if(assemble.layoutFiles && assemble.layoutFiles.length !== 0) {
+        grunt.verbose.writeln('Found layout files:'.yellow, assemble.layoutFiles);
+      } else {
+        assemble.layoutFiles = null;
+      }
+
       assemble.options.initializeEngine(assemble.engine, assemble.options);
       assemble.options.registerFunctions(assemble.engine);
 
@@ -630,10 +641,21 @@ module.exports = function(grunt) {
         layout = defaultLayout; // '{{>body}}';
       }
 
+      var layoutPath = src + layoutext;
+
       if(loadFile) {
-        // validate that the layout file exists
         grunt.verbose.writeln(src);
-        layout = path.normalize(path.join(layoutdir, src + layoutext));
+        // Check if we should use the files resolved with glob
+        if(assemble.layoutFiles) {
+          var matchedLayout = assemble.layoutFiles.filter(function findLayout(layout) {
+            return path.basename(layout) === layoutPath;
+          })[0];
+          layout = matchedLayout ? path.normalize(matchedLayout) : layoutPath;
+        } else {
+          // If layouts or layoutdir was not a valid glob pattern, validate that the layout file exists if we assume
+          // layouts or layoutdir to be a directory path
+          layout = path.normalize(path.join(layoutdir, layoutPath));
+        }
         grunt.verbose.writeln(layout);
 
         if(!fs.existsSync(layout)) {

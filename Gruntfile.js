@@ -314,6 +314,25 @@ module.exports = function(grunt) {
         files: {
           'test/actual/pages_metadata/': ['test/fixtures/pages/blog/index.hbs']
         }
+      },
+      // Using glob pattern for layouts
+      glob_layout: {
+        options: {
+          layouts: 'test/fixtures/layouts/**/*.hbs',
+          layoutdir: undefined
+        },
+        files: {
+          'test/actual/globlayout/simple': ['test/fixtures/pages/globlayout/globlayout.hbs']
+        }
+      },
+      // Using glob pattern for layouts
+      glob_layout_multi: {
+        options: {
+          layouts: ['test/fixtures/layouts/*.hbs', 'test/fixtures/layouts/globlayout/**/*.hbs']
+        },
+        files: {
+          'test/actual/globlayout/multi': ['test/fixtures/pages/globlayout/globlayout.hbs']
+        }
       }
     },
 

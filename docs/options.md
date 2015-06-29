@@ -20,6 +20,12 @@ Default: `undefined`
 
 The directory to use as the "cwd" for [layouts](http://assemble.io/docs/options-layout.html). When this option is defined, layouts may be defined using only the name of the layout.
 
+## [layouts](http://assemble.io/docs/options-layouts.html)
+Type: `String|Array<String>`
+Default: `undefined`
+
+A glob pattern to be used to find layouts. When this option is defined, the `layoutdir` option is ignored and layouts specified in templates will be searched for using the specified glob pattern(s).
+
 ## [layout](http://assemble.io/docs/options-layout.html)
 Type: `String`
 Default: `undefined`
