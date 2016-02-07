@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Assemble <http://assemble.io>
  *
@@ -23,36 +25,36 @@ describe('Collections', function() {
 
   describe('Sorts', function() {
 
-    it("by item name asc", function(done) {
+    it("by item name asc", function(cb) {
       var expected = getCollection('expected-sortby-item-asc.json');
       var col = _.cloneDeep(fakeCollection);
       var actual = collection.sort(col);
       grunt.verbose.writeln(require('util').inspect(actual, null, 10));
       expect(actual).to.deep.equal(expected);
-      done();
+      cb();
     });
 
-    it("by item name desc", function(done) {
+    it("by item name desc", function(cb) {
       var expected = getCollection('expected-sortby-item-desc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortorder = 'DESC';
       var actual = collection.sort(col);
       grunt.verbose.writeln(require('util').inspect(actual, null, 10));
       expect(actual).to.deep.equal(expected);
-      done();
+      cb();
     });
 
-    it("by page property asc", function(done) {
+    it("by page property asc", function(cb) {
       var expected = getCollection('expected-sortby-page-property-asc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortby = 'title';
       var actual = collection.sort(col);
       grunt.verbose.writeln(require('util').inspect(actual, null, 10));
       expect(actual).to.deep.equal(expected);
-      done();
+      cb();
     });
 
-    it("by page property desc", function(done) {
+    it("by page property desc", function(cb) {
       var expected = getCollection('expected-sortby-page-property-desc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortorder = 'DESC';
@@ -60,7 +62,7 @@ describe('Collections', function() {
       var actual = collection.sort(col);
       grunt.verbose.writeln(require('util').inspect(actual, null, 10));
       expect(actual).to.deep.equal(expected);
-      done();
+      cb();
     });
 
   });

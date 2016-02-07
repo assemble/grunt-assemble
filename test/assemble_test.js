@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Assemble <http://assemble.io>
  *

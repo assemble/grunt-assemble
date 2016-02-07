@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Assemble <http://assemble.io>
  *
@@ -35,16 +37,16 @@ describe('Reading From Files', function() {
     }
   };
 
-  it("yaml file starts and ends with --- has content", function(done) {
+  it("yaml file starts and ends with --- has content", function(cb) {
     var page = matter.read('./test/fixtures/mocha/yfm.hbs');
     expect(simpleExpected.data).to.deep.equal(page.data);
-    done();
+    cb();
   });
 
-  it("hbs file with complex yaml data and content", function(done) {
+  it("hbs file with complex yaml data and content", function(cb) {
     var page = matter.read("./test/fixtures/mocha/complex.hbs");
     expect(complexExpected).to.deep.equal(page);
-    done();
+    cb();
   });
 
 });
@@ -71,28 +73,28 @@ describe('Reading From Strings', function() {
     }
   };
 
-  it("yaml string starts with --- no content", function(done) {
+  it("yaml string starts with --- no content", function(cb) {
     var page = matter(simple1);
     expect({}).to.deep.equal(page.data);
-    done();
+    cb();
   });
 
-  it("yaml string starts and ends with --- no content", function(done) {
+  it("yaml string starts and ends with --- no content", function(cb) {
     var page = matter(simple2);
     expect(simpleExpected.data).to.deep.equal(page.data);
-    done();
+    cb();
   });
 
-  it("yaml string starts and ends with --- has content", function(done) {
+  it("yaml string starts and ends with --- has content", function(cb) {
     var page = matter(simple3);
     expect(simpleExpected.data).to.deep.equal(page.data);
-    done();
+    cb();
   });
 
-  it("hbs string with complex yaml data and content", function(done) {
+  it("hbs string with complex yaml data and content", function(cb) {
     var page = matter(complex);
     expect(complexExpected).to.deep.equal(page);
-    done();
+    cb();
   });
 
 });

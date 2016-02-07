@@ -3,34 +3,19 @@
   "description": "Static site generator for Grunt.js, Yeoman and Node.js. Used by Zurb Foundation, Zurb Ink, H5BP/Effeckt, Less.js / lesscss.org, Topcoat, Web Experience Toolkit, and hundreds of other projects to build sites, themes, components, documentation, blogs and gh-pages.",
   "version": "0.4.0",
   "homepage": "http://assemble.io",
-  "author": {
-    "name": "Assemble",
-    "url": "https://github.com/assemble/assemble"
-  },
+  "author": "Assemble (https://github.com/assemble/assemble)",
   "contributors": [
-    {
-      "name": "Brian Woodward",
-      "url": "https://github.com/doowb"
-    },
-    {
-      "name": "Jon Schlinkert",
-      "url": "https://github.com/jonschlinkert"
-    }
+    "Brian Woodward (https://github.com/doowb)",
+    "Jon Schlinkert (https://github.com/jonschlinkert)"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/assemble/grunt-assemble.git"
-  },
+  "repository": "assemble/grunt-assemble",
   "bugs": {
     "url": "git://github.com/assemble/grunt-assemble/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/assemble/grunt-assemble/blob/master/LICENSE-MIT"
-    }
+  "license": "MIT",
+  "files": [
+    "./lib/assemble"
   ],
-  "main": "./lib/assemble",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -95,5 +80,13 @@
     "website",
     "yaml",
     "yeoman"
-  ]
+  ],
+  "verb": {
+    "related": {
+      "list": []
+    },
+    "plugins": [
+      "gulp-format-md"
+    ]
+  }
 }
