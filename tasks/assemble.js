@@ -7,7 +7,10 @@
 
 'use strict';
 
+var path = require('path');
 var async = require('async');
+var namespace = require('namespace-context');
+var middleware = require('../lib/middleware');
 var mapper = require('../lib/mapper');
 var utils = require('../lib/utils');
 
@@ -22,15 +25,24 @@ module.exports = function(grunt) {
     var opts = this.options({
       plugins: [],
       helpers: [],
-      engine: '.hbs',
-      layoutdir: '',
-      layout: '',
-      layoutext: '',
-      partials: [],
+
       data: [],
       assets: '',
-      ext: '.html'
+      ext: '.html',
+      engine: 'hbs',
+      collections: {},
+
+      partials: [],
+
+      layoutdir: '',
+      layout: '',
+      layouts: '',
+      layoutext: ''
     });
+
+    opts.engine = utils.formatExt(opts.engine);
+    opts.layoutext = opts.layoutext ? utils.formatExt(opts.layoutext) : opts.engine;
+    opts.layouts = opts.layouts || path.join(opts.layoutdir, '*.' + opts.layoutext);
 
     /**
      * Get the instance of assemble to use
@@ -38,9 +50,12 @@ module.exports = function(grunt) {
 
     var app = opts.app;
     if (!utils.isObject(opts.app) || !opts.app.isAssemble) {
-      var assemble = require('assemble');
+      var assemble = require('assemble-core');
       app = assemble();
     }
+
+    // load options onto `app.options`
+    app.option(opts);
 
     // register the `questions` plugin
     app.use(utils.questions());
@@ -51,16 +66,24 @@ module.exports = function(grunt) {
 
     mapper(app).process(opts, function(err) {
       if (err) return cb(err);
-      console.log(app.options.engine)
+
+      app.option('context', function(locals) {
+        var context = utils.extend({}, this.cache.data);
+        context.data = utils.extend({}, locals);
+        return context;
+      });
+
+      app.use(namespace('page'));
+
+      // register built-in middleware
+      middleware(app);
 
       async.each(app.task.files, function(files, next) {
         app.src(files.src, app.options)
+          .on('error', console.log)
           .pipe(app.renderFile(app.options.engine))
-          .pipe(app.dest(function(file) {
-            file.base = files.dest;
-            file.extname = app.options.ext;
-            return file.base;
-          }))
+          .on('error', console.log)
+          .pipe(app.dest(utils.dest(app, files)))
           .on('error', next)
           .on('end', next);
       }, cb)

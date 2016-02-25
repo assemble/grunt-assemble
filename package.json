@@ -23,25 +23,29 @@
     "test": "grunt mochaTest"
   },
   "dependencies": {
-    "assemble-handlebars": "^0.3.0",
-    "async": "^0.9.0",
-    "gray-matter": "^0.4.2",
-    "inflection": "^1.3.6",
-    "lodash": "^2.4.1",
-    "resolve-dep": "^0.4.1"
+    "assemble-core": "^0.13.1",
+    "async": "^1.5.2",
+    "base-questions": "^0.4.1",
+    "debug": "^2.2.0",
+    "export-files": "^2.1.1",
+    "extend-shallow": "^2.0.1",
+    "get-value": "^2.0.3",
+    "inquirer2": "^0.1.1",
+    "isobject": "^2.0.0",
+    "map-config": "^0.5.0",
+    "mixin-deep": "^1.1.3",
+    "namespace-context": "^0.2.0",
+    "parser-front-matter": "^1.3.0",
+    "spawn-commands": "^0.3.1"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
+    "engine-handlebars": "^0.8.0",
+    "export-files": "^2.1.1",
     "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-mocha-test": "^0.11.0",
-    "grunt-sync-pkg": "^0.1.2",
-    "grunt-verb": "^0.2.4",
-    "handlebars-helper-eachitems": "^0.1.2",
-    "relative": "^0.1.4",
-    "time-grunt": "^0.3.2"
+    "grunt-contrib-clean": "^0.7.0",
+    "gulp-format-md": "^0.1.5",
+    "mocha": "^2.4.5",
+    "time-grunt": "^1.3.0"
   },
   "keywords": [
     "HTML",
