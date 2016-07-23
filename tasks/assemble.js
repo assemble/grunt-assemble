@@ -541,7 +541,6 @@ module.exports = function(grunt) {
       }
 
       // extend again
-      options.data = undefined;
       options.pages = undefined;
       options.layout = undefined;
       options.collections = undefined;
