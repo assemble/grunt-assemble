@@ -56,7 +56,11 @@ module.exports = function(grunt) {
         helpers: ['test/helpers/*.js'],
         layoutdir: 'test/fixtures/layouts',
         layout: 'default.hbs',
-        flatten: true
+        flatten: true,
+        data: {
+          global1: "globalData1",
+          global2: "globalData2"
+        }
       },
       // Should render pages with `layout: false` or `layout: none` defined
       no_layout: {
@@ -332,6 +336,29 @@ module.exports = function(grunt) {
         },
         files: {
           'test/actual/globlayout/multi': ['test/fixtures/pages/globlayout/globlayout.hbs']
+        }
+      },
+      // Should process pages no YAML front matter defined
+      noyfmdata: {
+        options: {
+          data: {
+            one: "1-one",
+            two: "2-two",
+            three: "3-three",
+            global1: "override global1 data via task option"
+          }
+        },
+        files: {
+          'test/actual/noyfm/no-yfm-data.html': ['test/fixtures/pages/no-yfm-data.hbs']
+        }
+      },
+      // Should process pages no YAML front matter defined
+      noyfmdatafile: {
+        options: {
+          data: 'test/fixtures/data/data.yml'
+        },
+        files: {
+          'test/actual/noyfm/no-yfm-datafile.html': ['test/fixtures/pages/no-yfm-data.hbs']
         }
       }
     },
