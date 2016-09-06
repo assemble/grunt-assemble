@@ -13,7 +13,7 @@
       <section id="validate"></section>
       <div class="docs-section">
         <div class="docs-header" id="content">
-          <h4><strong class="text-muted">test/fixtures/pages/yfm.hbs</strong> &#x2192; <strong class="text-success">test/actual/plugin_preprocess/yfm.html</strong></h4>
+          <h4><strong class="text-muted">test/fixtures/pages/no-yfm-data.hbs</strong> &#x2192; <strong class="text-success">test/actual/plugin_preprocess/no-yfm-data.html</strong></h4>
         </div>
         <hr>
       </div>
@@ -25,7 +25,7 @@
       <a href="example.html">First</a>
     </li>
     <li class="previous">
-      <a href="yfm-context.html">&larr; Previous</a>
+      <a href="md-helper.html">&larr; Previous</a>
     </li>
 
     <li class="pager-middle">
@@ -64,7 +64,7 @@
     <li class="pager-middle">
       <a href="md-helper.html">12</a>
     </li>
-    <li class="pager-middle">
+    <li class="active pager-middle">
       <a href="no-yfm-data.html">13</a>
     </li>
     <li class="pager-middle">
@@ -73,17 +73,17 @@
     <li class="pager-middle">
       <a href="yfm-context.html">15</a>
     </li>
-    <li class="active pager-middle">
+    <li class="pager-middle">
       <a href="yfm.html">16</a>
     </li>
 
+    <li class="next">
+      <a href="yfm.html">Last</a>
+    </li>
+    <li class="next">
+      <a href="no-yfm.html">Next &rarr;</a>
+    </li>
 
-    <li class="next disabled">
-      <a unselectable="on" class="unselectable">Last</a>
-    </li>
-    <li class="next disabled">
-      <a unselectable="on" class="unselectable">Next &rarr;</a>
-    </li>
 
 </ul><style>
 .unselectable {
@@ -108,7 +108,7 @@
       <a href="example.html">First</a>
     </li>
     <li class="prev">
-      <a href="yfm-context.html">&larr; Previous</a>
+      <a href="md-helper.html">&larr; Previous</a>
     </li>
 
     <li>
@@ -147,7 +147,7 @@
     <li>
       <a href="md-helper.html">12</a>
     </li>
-    <li>
+    <li class="active">
       <a href="no-yfm-data.html">13</a>
     </li>
     <li>
@@ -156,17 +156,17 @@
     <li>
       <a href="yfm-context.html">15</a>
     </li>
-    <li class="active">
+    <li>
       <a href="yfm.html">16</a>
     </li>
 
+    <li class="next">
+      <a href="no-yfm.html">Next &rarr;</a>
+    </li>
+    <li class="next">
+      <a href="yfm.html">Last</a>
+    </li>
 
-    <li class="next disabled">
-      <a unselectable="on" class="unselectable">Next &rarr;</a>
-    </li>
-    <li class="next disabled">
-      <a unselectable="on" class="unselectable">Last</a>
-    </li>
 
 </ul>
           </div>
@@ -176,11 +176,11 @@
           <div class="docs-section">
             <div class="docs-header" id="content">
               <h4><strong>Page layout:</strong> preprocess.hbs</h4>
-              <h4><strong>Page src:</strong> test/fixtures/pages/yfm.hbs</h4>
-              <h4><strong>Page dest:</strong> test/actual/plugin_preprocess/yfm.html</h4>
-              <h4><strong>Dest filename:</strong> yfm.html</h4>
-              <h4><strong>Dest basename:</strong> yfm</h4>
-              <h4><strong>Page title:</strong> YFM</h4>
+              <h4><strong>Page src:</strong> test/fixtures/pages/no-yfm-data.hbs</h4>
+              <h4><strong>Page dest:</strong> test/actual/plugin_preprocess/no-yfm-data.html</h4>
+              <h4><strong>Dest filename:</strong> no-yfm-data.html</h4>
+              <h4><strong>Dest basename:</strong> no-yfm-data</h4>
+              <h4><strong>Page title:</strong> (no title defined)</h4>
             </div>
 
             <hr>
@@ -471,9 +471,14 @@
 
             <hr>
 
-            
+            There is no YAML front matter in this page.
 
-<div class="alert alert-info">This is an alert</div>
+<ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+  <li>globalData1</li>
+</ul>
 
 
             <div class="docs-header" id="content">
@@ -520,15 +525,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -558,15 +563,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -596,15 +601,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -634,15 +639,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -672,15 +677,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -710,15 +715,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -748,15 +753,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -786,15 +791,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -824,15 +829,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -862,15 +867,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -900,15 +905,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -938,15 +943,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -960,7 +965,7 @@
                   isCurrentPage:           false
                   relativeLink:       md-helper.html
                   -->
-<li><a href="no-yfm-data.html" class="">no-yfm-data</a></li>
+<li><a href="no-yfm-data.html" class="active">no-yfm-data</a></li>
                   <!--
                   "this"
                   ===============================
@@ -971,20 +976,20 @@
                   this.pagename:      no-yfm-data.html
                   this.basename:      no-yfm-data
                   this.ext:           .html
-                  this.isCurrentPage:      false
+                  this.isCurrentPage:      true
                   this.relativeLink:  no-yfm-data.html
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -995,7 +1000,7 @@
                   pagename:           no-yfm-data.html
                   basename:           no-yfm-data
                   ext:                .html
-                  isCurrentPage:           false
+                  isCurrentPage:           true
                   relativeLink:       no-yfm-data.html
                   -->
 <li><a href="no-yfm.html" class="">no-yfm</a></li>
@@ -1014,15 +1019,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -1052,15 +1057,15 @@
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -1074,7 +1079,7 @@
                   isCurrentPage:           false
                   relativeLink:       yfm-context.html
                   -->
-<li><a href="yfm.html" class="active">yfm</a></li>
+<li><a href="yfm.html" class="">yfm</a></li>
                   <!--
                   "this"
                   ===============================
@@ -1085,20 +1090,20 @@
                   this.pagename:      yfm.html
                   this.basename:      yfm
                   this.ext:           .html
-                  this.isCurrentPage:      true
+                  this.isCurrentPage:      false
                   this.relativeLink:  yfm.html
 
                   "page"
                   ===============================
-                  page.src:           test/fixtures/pages/yfm.hbs
-                  page.dest:          test/actual/plugin_preprocess/yfm.html
+                  page.src:           test/fixtures/pages/no-yfm-data.hbs
+                  page.dest:          test/actual/plugin_preprocess/no-yfm-data.html
                   page.dirname:       test/actual/plugin_preprocess
-                  page.filename:      yfm.html
-                  page.pagename:      yfm.html
-                  page.basename:      yfm
+                  page.filename:      no-yfm-data.html
+                  page.pagename:      no-yfm-data.html
+                  page.basename:      no-yfm-data
                   page.ext:           .html
                   page.isCurrentPage:      false
-                  page.relativeLink:  yfm.html
+                  page.relativeLink:  no-yfm-data.html
 
                   "root"
                   ===============================
@@ -1109,7 +1114,7 @@
                   pagename:           yfm.html
                   basename:           yfm
                   ext:                .html
-                  isCurrentPage:           true
+                  isCurrentPage:           false
                   relativeLink:       yfm.html
                   -->
               </ul>
@@ -1119,16 +1124,9 @@
 {
   "_page": "all",
   "assets": "../../assets",
-  "basename": "yfm",
-  "data": {
-    "title": "YFM",
-    "foo": "bar",
-    "items": [
-      "alpha",
-      "omega"
-    ]
-  },
-  "dest": "test/actual/plugin_preprocess/yfm.html",
+  "basename": "no-yfm-data",
+  "data": {},
+  "dest": "test/actual/plugin_preprocess/no-yfm-data.html",
   "dirname": "test/actual/plugin_preprocess",
   "ext": ".html",
   "extname": ".html",
@@ -1159,25 +1157,20 @@
       "dest": "test/actual/plugin_preprocess/"
     }
   },
-  "filename": "yfm.html",
+  "filename": "no-yfm-data.html",
   "first": false,
-  "foo": "bar",
-  "index": 15,
+  "index": 12,
   "isCurrentPage": false,
-  "items": [
-    "alpha",
-    "omega"
-  ],
-  "last": true,
-  "middle": false,
-  "number": 16,
-  "page": "<!DOCTYPE html>\n  <html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout filename: '{{layout}}'</title>\n    <link rel=\"stylesheet\" href=\"http://getbootstrap.com/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"{{assets}}/validation.css\">\n  </head>\n  <body style=\"padding-top: 60px;\">\n    <div class=\"container\">\n\n      <!-- validate assets path -->\n      <section id=\"validate\"></section>\n      <div class=\"docs-section\">\n        <div class=\"docs-header\" id=\"content\">\n          <h4><strong class=\"text-muted\">{{page.src}}</strong> &#x2192; <strong class=\"text-success\">{{page.dest}}</strong></h4>\n        </div>\n        <hr>\n      </div>\n\n      {{pager pagination}}\n      <hr>\n\n      <div class=\"row\">\n        <!-- Column: sidebar -->\n        <div class=\"col-md-3\">\n          <div class=\"bs-sidebar hidden-print\" role=\"complementary\">\n            <!-- pagination -->\n            {{nav pagination}}\n          </div>\n        </div>\n        <!-- Column: content -->\n        <div class=\"col-md-9\" role=\"main\">\n          <div class=\"docs-section\">\n            <div class=\"docs-header\" id=\"content\">\n              <h4><strong>Page layout:</strong> {{default originalLayout '(no layout defined)'}}</h4>\n              <h4><strong>Page src:</strong> {{page.src}}</h4>\n              <h4><strong>Page dest:</strong> {{page.dest}}</h4>\n              <h4><strong>Dest filename:</strong> {{page.filename}}</h4>\n              <h4><strong>Dest basename:</strong> {{page.basename}}</h4>\n              <h4><strong>Page title:</strong> {{default title '(no title defined)'}}</h4>\n            </div>\n\n            <hr>\n            <div class=\"row\">\n              <div class=\"col-md-6\">\n                <!-- Categories Collection -->\n                {{#if categories}}\n                  {{> collections-categories }}\n                {{/if}}\n              </div>\n              <div class=\"col-md-6\">\n                {{#if tags}}\n                  {{> collections-tags }}\n                {{/if}}\n              </div>\n            </div>\n\n            <hr>\n\n            \n\n<div class=\"alert alert-info\">This is an alert</div>\n\n\n            <div class=\"docs-header\" id=\"content\">\n              <h1>Content</h1>\n            </div>\n            <ul>\n            {{#each pages}}\n              <li><a href=\"{{relative ../page.dest dest}}\">{{filename}}</a></li>\n            {{/each}}\n            </ul>\n\n            <hr>\n            <div style=\"display: none\">\n\n              <h1>Page</h1>\n              <h1>Each pages</h1>\n              <ul>\n                {{#each pages}}<li><a href=\"{{relativeLink}}\" class=\"{{#isCurrentPage}}active{{/isCurrentPage}}\">{{basename}}</a></li>\n                  <!--\n                  \"this\"\n                  ===============================\n                  this.src:           {{this.src}}\n                  this.dest:          {{this.dest}}\n                  this.dirname:       {{this.dirname}}\n                  this.filename:      {{this.filename}}\n                  this.pagename:      {{this.pagename}}\n                  this.basename:      {{this.basename}}\n                  this.ext:           {{this.ext}}\n                  this.isCurrentPage:      {{this.isCurrentPage}}\n                  this.relativeLink:  {{this.relativeLink}}\n\n                  \"page\"\n                  ===============================\n                  page.src:           {{../page.src}}\n                  page.dest:          {{../page.dest}}\n                  page.dirname:       {{../page.dirname}}\n                  page.filename:      {{../page.filename}}\n                  page.pagename:      {{../page.pagename}}\n                  page.basename:      {{../page.basename}}\n                  page.ext:           {{../page.ext}}\n                  page.isCurrentPage:      {{../page.isCurrentPage}}\n                  page.relativeLink:  {{../page.relativeLink}}\n\n                  \"root\"\n                  ===============================\n                  src:                {{src}}\n                  dest:               {{dest}}\n                  dirname:            {{dirname}}\n                  filename:           {{filename}}\n                  pagename:           {{pagename}}\n                  basename:           {{basename}}\n                  ext:                {{ext}}\n                  isCurrentPage:           {{isCurrentPage}}\n                  relativeLink:       {{relativeLink}}\n                  -->\n                {{/each}}\n              </ul>\n\n              <h1>Debug Info</h1>\n              {{{inspect page 'json'}}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"{{assets}}/validation.js\"></script>\n  </body>\n</html>\n",
-  "pageName": "yfm.html",
-  "pagename": "yfm.html",
-  "prev": 14,
-  "relativeLink": "yfm.html",
-  "src": "test/fixtures/pages/yfm.hbs",
-  "title": "YFM"
+  "last": false,
+  "middle": true,
+  "next": 13,
+  "number": 13,
+  "page": "<!DOCTYPE html>\n  <html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout filename: '{{layout}}'</title>\n    <link rel=\"stylesheet\" href=\"http://getbootstrap.com/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"{{assets}}/validation.css\">\n  </head>\n  <body style=\"padding-top: 60px;\">\n    <div class=\"container\">\n\n      <!-- validate assets path -->\n      <section id=\"validate\"></section>\n      <div class=\"docs-section\">\n        <div class=\"docs-header\" id=\"content\">\n          <h4><strong class=\"text-muted\">{{page.src}}</strong> &#x2192; <strong class=\"text-success\">{{page.dest}}</strong></h4>\n        </div>\n        <hr>\n      </div>\n\n      {{pager pagination}}\n      <hr>\n\n      <div class=\"row\">\n        <!-- Column: sidebar -->\n        <div class=\"col-md-3\">\n          <div class=\"bs-sidebar hidden-print\" role=\"complementary\">\n            <!-- pagination -->\n            {{nav pagination}}\n          </div>\n        </div>\n        <!-- Column: content -->\n        <div class=\"col-md-9\" role=\"main\">\n          <div class=\"docs-section\">\n            <div class=\"docs-header\" id=\"content\">\n              <h4><strong>Page layout:</strong> {{default originalLayout '(no layout defined)'}}</h4>\n              <h4><strong>Page src:</strong> {{page.src}}</h4>\n              <h4><strong>Page dest:</strong> {{page.dest}}</h4>\n              <h4><strong>Dest filename:</strong> {{page.filename}}</h4>\n              <h4><strong>Dest basename:</strong> {{page.basename}}</h4>\n              <h4><strong>Page title:</strong> {{default title '(no title defined)'}}</h4>\n            </div>\n\n            <hr>\n            <div class=\"row\">\n              <div class=\"col-md-6\">\n                <!-- Categories Collection -->\n                {{#if categories}}\n                  {{> collections-categories }}\n                {{/if}}\n              </div>\n              <div class=\"col-md-6\">\n                {{#if tags}}\n                  {{> collections-tags }}\n                {{/if}}\n              </div>\n            </div>\n\n            <hr>\n\n            There is no YAML front matter in this page.\n\n<ul>\n  <li>{{one}}</li>\n  <li>{{two}}</li>\n  <li>{{three}}</li>\n  <li>{{global1}}</li>\n</ul>\n\n\n            <div class=\"docs-header\" id=\"content\">\n              <h1>Content</h1>\n            </div>\n            <ul>\n            {{#each pages}}\n              <li><a href=\"{{relative ../page.dest dest}}\">{{filename}}</a></li>\n            {{/each}}\n            </ul>\n\n            <hr>\n            <div style=\"display: none\">\n\n              <h1>Page</h1>\n              <h1>Each pages</h1>\n              <ul>\n                {{#each pages}}<li><a href=\"{{relativeLink}}\" class=\"{{#isCurrentPage}}active{{/isCurrentPage}}\">{{basename}}</a></li>\n                  <!--\n                  \"this\"\n                  ===============================\n                  this.src:           {{this.src}}\n                  this.dest:          {{this.dest}}\n                  this.dirname:       {{this.dirname}}\n                  this.filename:      {{this.filename}}\n                  this.pagename:      {{this.pagename}}\n                  this.basename:      {{this.basename}}\n                  this.ext:           {{this.ext}}\n                  this.isCurrentPage:      {{this.isCurrentPage}}\n                  this.relativeLink:  {{this.relativeLink}}\n\n                  \"page\"\n                  ===============================\n                  page.src:           {{../page.src}}\n                  page.dest:          {{../page.dest}}\n                  page.dirname:       {{../page.dirname}}\n                  page.filename:      {{../page.filename}}\n                  page.pagename:      {{../page.pagename}}\n                  page.basename:      {{../page.basename}}\n                  page.ext:           {{../page.ext}}\n                  page.isCurrentPage:      {{../page.isCurrentPage}}\n                  page.relativeLink:  {{../page.relativeLink}}\n\n                  \"root\"\n                  ===============================\n                  src:                {{src}}\n                  dest:               {{dest}}\n                  dirname:            {{dirname}}\n                  filename:           {{filename}}\n                  pagename:           {{pagename}}\n                  basename:           {{basename}}\n                  ext:                {{ext}}\n                  isCurrentPage:           {{isCurrentPage}}\n                  relativeLink:       {{relativeLink}}\n                  -->\n                {{/each}}\n              </ul>\n\n              <h1>Debug Info</h1>\n              {{{inspect page 'json'}}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"{{assets}}/validation.js\"></script>\n  </body>\n</html>\n",
+  "pageName": "no-yfm-data.html",
+  "pagename": "no-yfm-data.html",
+  "prev": 11,
+  "relativeLink": "no-yfm-data.html",
+  "src": "test/fixtures/pages/no-yfm-data.hbs"
 }
 </code></pre>
             </div>

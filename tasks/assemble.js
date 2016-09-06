@@ -52,9 +52,9 @@ module.exports = function(grunt) {
 
       assemble.partials = file.expand(assemble.options.partials);
 
-      if(_.isArray(assemble.options.data)) {
-        assemble.dataFiles = file.expand(assemble.options.data);
-        assemble.options.data = {};
+      if(_.isArray(assemble.options.dataFiles) && assemble.options.dataFiles.length > 0) {
+        assemble.dataFiles = file.expand(assemble.options.dataFiles);
+        //assemble.options.data = {};
       }
 
       // Expand layout into layoutFiles if a glob pattern is specified
