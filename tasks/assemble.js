@@ -608,8 +608,13 @@ module.exports = function(grunt) {
    * @return {[type]}         [description]
    */
   var processContext = function(grunt, context, data) {
+    var currentGruntConfigData = grunt.config.data;
+
     grunt.config.data = _.extend({}, grunt.config.data, context, data);
-    return grunt.config.process(data || context);
+    var processed = grunt.config.process(data || context);
+
+    grunt.config.data = currentGruntConfigData;
+    return processed;
   };
 
 
