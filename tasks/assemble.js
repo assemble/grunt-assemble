@@ -492,7 +492,8 @@ module.exports = function(grunt) {
         data         = options.data,
         pages        = options.pages,
         collections  = options.collections,
-        context      = {};
+        context      = {},
+        datas        = {};
 
     grunt.verbose.writeln('Variables loaded');
 
@@ -507,7 +508,9 @@ module.exports = function(grunt) {
       options.pages   = undefined;
       options.layout  = undefined;
       options.collections = undefined;
-      context         = _.extend({}, context, assemble.util.filterProperties(options), data, pageContext);
+
+      datas           = _.merge(data, pageContext);
+      context         = _.extend({}, context, assemble.util.filterProperties(options), datas);
       options.data    = data;
       options.pages   = pages;
       options.collections = collections;
@@ -544,7 +547,9 @@ module.exports = function(grunt) {
       options.pages = undefined;
       options.layout = undefined;
       options.collections = undefined;
-      context = _.extend({}, context, assemble.util.filterProperties(options), layout.data, data, pageContext);
+      datas = _.merge(data, pageContext);
+      context = _.extend({}, context, assemble.util.filterProperties(options), layout.data, datas);
+
       options.data = data;
       options.pages = pages;
       options.collections = collections;
