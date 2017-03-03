@@ -5,16 +5,36 @@
   "homepage": "http://assemble.io",
   "author": "Assemble (https://github.com/assemble/assemble)",
   "contributors": [
-    "Brian Woodward (https://github.com/doowb)",
-    "Jon Schlinkert (https://github.com/jonschlinkert)"
+    "Ain Tohvri (http://tekkie.flashbit.net)",
+    "Alex Sanz (https://github.com/asans)",
+    "Anders D. Johnson (https://andrz.me)",
+    "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me)",
+    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Carl A. Bauer <carl.a.bauer@gmail.com> (http://carlbauer.org)",
+    "Casey Garland <caseyg1204@gmail.com> (https://github.com/caseyg1204)",
+    "Dane Petersen (https://thegreatsunra.com)",
+    "Daniel Rauber (https://danielrauber.de)",
+    "Gion Kunz <gion.kunz@gmail.com> (https://github.com/gionkunz)",
+    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)",
+    "Jordan Thomas <mail@jordanthomas.me> (http://jordanthomas.me)",
+    "Justin Heideman <justin@fiddlyio.com> (http://fiddlyio.com)",
+    "Michael Mifsud (https://github.com/xzyfer)",
+    "Mikko Tapionlinna (http://mikko.tapionlinna.fi)",
+    "Munim Abdul <http://scr.im/munim> (http://www.munim.net)",
+    "Patrick Burtchaell <patrick@pburtchaell.com> (https://pburtchaell.com)",
+    "Sam Morrison (http://cnstechgroup.com)",
+    "Steven Black <steveb@stevenblack.com> (http://stevenblack.com)",
+    "Thomas Parisot <oncletom@users.noreply.github.com> (https://oncletom.io)",
+    "Thomas Traub (http://thomastraub.com)",
+    "Tyler Howarth (twitter.com/tylr)"
   ],
   "repository": "assemble/grunt-assemble",
   "bugs": {
-    "url": "git://github.com/assemble/grunt-assemble/issues"
+    "url": "https://github.com/assemble/grunt-assemble/issues"
   },
   "license": "MIT",
   "files": [
-    "./lib/assemble"
+    "lib"
   ],
   "engines": {
     "node": ">= 0.8.0"
@@ -23,33 +43,35 @@
     "test": "grunt mochaTest"
   },
   "dependencies": {
-    "assemble-core": "^0.13.1",
-    "async": "^1.5.2",
-    "base-questions": "^0.4.1",
-    "debug": "^2.2.0",
+    "arr-flatten": "^1.0.1",
+    "array-unique": "^0.3.2",
+    "assemble": "^0.23.0",
+    "assemble-core": "^0.31.0",
+    "assemble-loader": "^1.0.5",
+    "async-each-series": "^1.1.0",
+    "base-questions": "^0.9.1",
+    "debug": "^2.6.1",
+    "engine-handlebars": "^0.8.2",
     "export-files": "^2.1.1",
     "extend-shallow": "^2.0.1",
-    "get-value": "^2.0.3",
+    "get-value": "^2.0.6",
     "inquirer2": "^0.1.1",
-    "isobject": "^2.0.0",
+    "isobject": "^3.0.0",
     "map-config": "^0.5.0",
     "mixin-deep": "^1.1.3",
     "namespace-context": "^0.2.0",
-    "parser-front-matter": "^1.3.0",
+    "parser-front-matter": "^1.6.2",
     "spawn-commands": "^0.3.1"
   },
   "devDependencies": {
-    "engine-handlebars": "^0.8.0",
-    "export-files": "^2.1.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^0.7.0",
-    "gulp-format-md": "^0.1.5",
-    "mocha": "^2.4.5",
-    "time-grunt": "^1.3.0"
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "gulp-format-md": "^0.1.11",
+    "mocha": "^3.2.0"
   },
   "keywords": [
-    "HTML",
     "alternative",
+    "assemble",
     "blog",
     "boilerplate",
     "boilerplates",
@@ -66,6 +88,7 @@
     "handlebars",
     "handlebars-helper-eachitems",
     "helpers",
+    "HTML",
     "javascript",
     "jekyll",
     "matter",
@@ -85,6 +108,13 @@
     "yaml",
     "yeoman"
   ],
+  "lintDeps": {
+    "files": {
+      "dependencies": [
+        "tasks/**"
+      ]
+    }
+  },
   "verb": {
     "related": {
       "list": []
