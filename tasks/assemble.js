@@ -391,7 +391,7 @@ module.exports = function(grunt) {
     var renderPages = function(assemble, next) {
       grunt.verbose.writeln(('\n' + 'Assembling pages...').yellow);
 
-      async.forEach(assemble.options.pages, function(page, done) {
+      async.forEach(assemble.options.pages.slice(), function(page, done) {
         grunt.verbose.writeln(require('util').inspect(page));
 
         build(page, assemble, function(err, result) {
