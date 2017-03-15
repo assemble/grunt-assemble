@@ -53,7 +53,7 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         assets: 'test/assets',
-        helpers: ['test/helpers/*.js'],
+        helpers: ['test/helpers/*.js', 'handlebars-helper-eachitems'],
         layoutdir: 'test/fixtures/layouts',
         layout: 'default.hbs',
         flatten: true,
