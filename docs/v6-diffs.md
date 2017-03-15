@@ -32,6 +32,35 @@ Helpers have been added that map to methods on the built-in `path` module. Some 
 
 The "inspect" helper has been removed from `handlebars-helpers`. The test fixtures in this project use the "inspect" helper so it has been recreated [here](./test/helpers/logging.js).
 
+**missing helper "unless_eq"**
+
+The "unless_eq" helper has been renamed to "unlessEq".
+
+**missing helper "md" or "markdown"**
+
+There is a bug in `handlebars-helpers@0.6` that causes the `md` and `markdown` helpers to not be registered correctly. This has been fixed in newer versions of `handlebars-helpers`, however those changes have made it here yet. There is currently a refactor of `grunt-assemble` that will include the fix, but for now, the following is a work-around:
+
+Create a file and register the helpers manually:
+
+```js
+// helpers/markdown.js
+module.exports.register = function (Handlebars) {
+  'use strict';
+
+  Handlebars.registerHelper('markdown', require('helper-markdown')());
+  Handlebars.registerHelper('md', require('helper-md').sync);
+};
+```
+
+```js
+// Gruntfile.js
+assemble: {
+  options: {
+    helpers: ['./helpers/*.js']
+  }
+}
+```
+
 **handlebars 4 changed how context depths are handled**
 
 `assemble-handlebars` is also using a newer version of handlebars that changed how the depth context is handled. Some of the block helpers that would create a new depth, no longer create the depth. This requires changing some templates that use the `{{../}}` syntax to reduce the amount of `../` segments used. This can be seen in block helpers that don't modify the context, like `{{#if}}{{/if}}` and `{{#is}}{{/is}}`.
