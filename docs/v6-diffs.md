@@ -1,4 +1,5 @@
-## Breaking changes between versions 5 and 6
+
+### Breaking changes between versions `0.5.0` and `0.6.0`
 
 Version 6 is using [assemble-handlebars][] version `0.4.0` which updates [handlebars-helpers][] to version `0.6.0`. Due to this update, there are some breaking changes with how some helpers are loaded and some missing/added helpers.
 
@@ -64,3 +65,7 @@ assemble: {
 **handlebars 4 changed how context depths are handled**
 
 `assemble-handlebars` is also using a newer version of handlebars that changed how the depth context is handled. Some of the block helpers that would create a new depth, no longer create the depth. This requires changing some templates that use the `{{../}}` syntax to reduce the amount of `../` segments used. This can be seen in block helpers that don't modify the context, like `{{#if}}{{/if}}` and `{{#is}}{{/is}}`.
+
+
+[assemble-handlebars]: https://github.com/assemble/assemble-handlebars
+[handlebars-helpers]: https://github.com/assemble/handlebars-helpers
