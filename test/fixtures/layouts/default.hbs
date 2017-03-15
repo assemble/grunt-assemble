@@ -101,10 +101,10 @@
               src:           {{src}}
               dest:          {{dest}}
               layout:        {{layout}}
-              dirname:       {{dirname}}
+              dirname:       {{@root.dirname}}
               filename:      {{filename}}
               pagename:      {{pagename}}
-              basename:      {{basename}}
+              basename:      {{@root.basename}}
               ext:           {{ext}}
               -->
               <h1>Each pages</h1>
@@ -136,10 +136,10 @@
                   ===============================
                   src:           {{src}}
                   dest:          {{dest}}
-                  dirname:       {{dirname}}
+                  dirname:       {{@root.dirname}}
                   filename:      {{filename}}
                   pagename:      {{pagename}}
-                  basename:      {{basename}}
+                  basename:      {{@root.basename}}
                   ext:           {{ext}}
                   -->
                 {{/each}}

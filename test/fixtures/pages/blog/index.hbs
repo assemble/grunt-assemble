@@ -30,7 +30,7 @@ layout: false
               <h3>Layout: {{default this.layout 'No layout was used.'}}</h3>
             </div>
             {{#each pages}}
-              {{#unless_eq ../filename compare=filename}}
+              {{#unlessEq ../filename compare=filename}}
                 <div class="docs-section">
                   <div class="docs-header" id="content">
                     <h1>{{../data.title}}</h1>
@@ -39,7 +39,7 @@ layout: false
                     {{gist this}}
                   {{/each}}
                 </div>
-              {{/unless_eq}}
+              {{/unlessEq}}
             {{/each}}
           </div>
         </div>

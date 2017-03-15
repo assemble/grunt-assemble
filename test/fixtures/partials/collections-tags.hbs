@@ -47,8 +47,8 @@ description: Different ways to use tags collections.
     <ul class="links">
     {{#if pages}}
       {{#each pages}}
-        <li{{#is ../../../page.dest dest}} class="active"{{/is}}>
-          <a href="{{relative ../../../page.dest dest}}">{{{filename}}}</a>
+        <li{{#is ../../page.dest dest}} class="active"{{/is}}>
+          <a href="{{relative ../../page.dest dest}}">{{{filename}}}</a>
         </li>
       {{/each}}
       {{else}}
