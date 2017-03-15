@@ -265,7 +265,7 @@ The "unless_eq" helper has been renamed to "unlessEq".
 
 **missing helper "md" or "markdown"**
 
-There is a bug in `handlebars-helpers@0.6` that causes the `md` and `markdown` helpers to not be registered correctly. This has been fixed in newer versions of `handlebars-helpers`, however those changes have made it here yet. There is currently a refactor of `grunt-assemble` that will include the fix, but for now, the following is a work-around:
+There is a bug in `handlebars-helpers@0.6` that causes the `md` and `markdown` helpers to not be registered correctly. This has been fixed in newer versions of `handlebars-helpers`, however those changes have not made it here yet. There is currently a refactor of `grunt-assemble` that will include the fix, but for now, use the following work-around:
 
 Create a file and register the helpers manually:
 
@@ -290,7 +290,7 @@ assemble: {
 
 **handlebars 4 changed how context depths are handled**
 
-`assemble-handlebars` is also using a newer version of handlebars that changed how the depth context is handled. Some of the block helpers that would create a new depth, no longer create the depth. This requires changing some templates that use the `{{../}}` syntax to reduce the amount of `../` segments used. This can be seen in block helpers that don't modify the context, like `{{#if}}{{/if}}` and `{{#is}}{{/is}}`.
+`assemble-handlebars` is also using a newer version of handlebars that changed how the context depth is handled. Some of the block helpers that would create a new depth, no longer create the depth. This requires changing some templates that use the `{{../}}` syntax to reduce the amount of `../` segments used. This can be seen in block helpers that don't modify the context, like `{{#if}}{{/if}}` and `{{#is}}{{/is}}`.
 
 
 [assemble-handlebars]: https://github.com/assemble/assemble-handlebars
