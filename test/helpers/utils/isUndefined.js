@@ -5,7 +5,6 @@
  * Licensed under the MIT License (MIT).
  */
 
-
 var utils = require('./utils');
 
 /**
@@ -13,7 +12,8 @@ var utils = require('./utils');
  * @param  {[type]} value [description]
  * @return {[type]}       [description]
  */
-module.exports = function (value) {
+
+module.exports = function(value) {
   'use strict';
   /*jshint eqnull: true */
   return value === 'undefined' || utils.toString.call(value) === '[object Function]' || (value.hash != null);

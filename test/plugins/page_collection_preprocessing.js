@@ -8,9 +8,8 @@ module.exports = [
 
   // add an isCurrentPage flag to the page if the dest matches
   function isCurrentPage(page, context) {
-    page.isCurrentPage = (page.dest === context.page.dest ? true : false);
+    page.isCurrentPage = (page.dest === context.page.dest);
   },
-
 
   // add a relative link from the "current page" to the
   // page in the collection

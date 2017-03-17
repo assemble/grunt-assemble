@@ -5,9 +5,9 @@
  * Licensed under the MIT License (MIT).
  */
 
-var sort  = require('sort-object');
+var sort = require('sort-object');
 
-module.exports.register = function (Handlebars) {
+module.exports.register = function(Handlebars) {
   'use strict';
 
   Handlebars.registerHelper('inspect', function(context, options) {
@@ -27,21 +27,20 @@ module.exports.register = function (Handlebars) {
 function switchOutput(ext, markdown, html) {
   var output;
   switch (ext) {
+    // return markdown
+    case '.markdown':
+    case '.md':
+      output = markdown;
+      break;
 
-  // return markdown
-  case '.markdown':
-  case '.md':
-    output = markdown;
-    break;
+    // return HTML
+    case '.html':
+    case '.htm':
+      output = html;
+      break;
 
-  // return HTML
-  case '.html':
-  case '.htm':
-    output = html;
-    break;
-
-  default:
-    output = html;
+    default:
+      output = html;
   }
   return output;
 }

@@ -8,6 +8,6 @@
 
 module.exports = function(hash) {
   return Object.keys(hash).map(function(key) {
-    return "" + key + "=\"" + hash[key] + "\"";
+    return '' + key + '="' + hash[key] + '"';
   }).join(' ');
 };

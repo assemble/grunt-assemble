@@ -6,7 +6,6 @@
  */
 'use strict';
 
-
 /**
  * toString
  * @param  {[type]} val [description]
@@ -16,7 +15,7 @@ module.exports = function(val) {
   /*jshint eqnull: true */
 
   if (val == null) {
-    return "";
+    return '';
   } else {
     return val.toString();
   }

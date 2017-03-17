@@ -5,7 +5,7 @@
  * Licensed under the MIT License (MIT).
  */
 
-module.exports.register = function (Handlebars) {
+module.exports.register = function(Handlebars) {
   'use strict';
 
   Handlebars.registerHelper('markdown', require('helper-markdown')());

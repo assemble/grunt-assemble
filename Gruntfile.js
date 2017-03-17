@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Metadata for tests
-    pkg : grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
     config: grunt.file.readJSON('test/fixtures/data/config.json'),
     site: grunt.file.readYAML('test/fixtures/data/_site.yml'),
 
@@ -30,7 +30,6 @@ module.exports = function(grunt) {
       ]
     },
 
-
     /**
      * Run mocha tests.
      */
@@ -43,7 +42,6 @@ module.exports = function(grunt) {
       }
     },
 
-
     /**
      * Assemble examples/tests
      */
@@ -55,8 +53,8 @@ module.exports = function(grunt) {
         layout: 'default.hbs',
         flatten: true,
         data: {
-          global1: "globalData1",
-          global2: "globalData2"
+          global1: 'globalData1',
+          global2: 'globalData2'
         }
       },
       // Should render pages with `layout: false` or `layout: none` defined
@@ -279,10 +277,10 @@ module.exports = function(grunt) {
       // Pages collections
       pages_array: {
         options: {
-          layout: "post.hbs",
+          layout: 'post.hbs',
           site: {
-            title: "A Blog",
-            author: "Jon Schlinkert"
+            title: 'A Blog',
+            author: 'Jon Schlinkert'
           },
           pages: '<%= config.pages.one %>'
         },
@@ -339,10 +337,10 @@ module.exports = function(grunt) {
       noyfmdata: {
         options: {
           data: {
-            one: "1-one",
-            two: "2-two",
-            three: "3-three",
-            global1: "override global1 data via task option"
+            one: '1-one',
+            two: '2-two',
+            three: '3-three',
+            global1: 'override global1 data via task option'
           }
         },
         files: {
@@ -360,9 +358,9 @@ module.exports = function(grunt) {
       }
     },
 
-    // Example config data for "pages_array" and "pages_object" targets
+    // Example config data for 'pages_array' and 'pages_object' targets
     component: {
-      one: "alert"
+      one: 'alert'
     },
 
     /**

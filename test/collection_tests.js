@@ -6,12 +6,10 @@
  */
 
 var collection = require('../lib/collection');
-var expect     = require('chai').expect;
-var grunt      = require('grunt');
-var path       = require('path');
-var _          = require('lodash');
-
-
+var expect = require('chai').expect;
+var grunt = require('grunt');
+var path = require('path');
+var _ = require('lodash');
 
 var getCollection = function(file) {
   return grunt.file.readJSON(path.join('./test/fixtures/data/collections', file));
@@ -23,7 +21,7 @@ describe('Collections', function() {
 
   describe('Sorts', function() {
 
-    it("by item name asc", function(done) {
+    it('by item name asc', function(done) {
       var expected = getCollection('expected-sortby-item-asc.json');
       var col = _.cloneDeep(fakeCollection);
       var actual = collection.sort(col);
@@ -32,7 +30,7 @@ describe('Collections', function() {
       done();
     });
 
-    it("by item name desc", function(done) {
+    it('by item name desc', function(done) {
       var expected = getCollection('expected-sortby-item-desc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortorder = 'DESC';
@@ -42,7 +40,7 @@ describe('Collections', function() {
       done();
     });
 
-    it("by page property asc", function(done) {
+    it('by page property asc', function(done) {
       var expected = getCollection('expected-sortby-page-property-asc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortby = 'title';
@@ -52,7 +50,7 @@ describe('Collections', function() {
       done();
     });
 
-    it("by page property desc", function(done) {
+    it('by page property desc', function(done) {
       var expected = getCollection('expected-sortby-page-property-desc.json');
       var col = _.cloneDeep(fakeCollection);
       col.sortorder = 'DESC';

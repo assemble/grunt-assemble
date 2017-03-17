@@ -7,12 +7,12 @@
 
 var path = require('path');
 
-module.exports.register = function (Handlebars) {
+module.exports.register = function(Handlebars) {
   'use strict';
 
   Handlebars.registerHelper('rel', function(context) {
-    var newDest      = this.dest;
-    var destDirname  = path.dirname(context);
+    var newDest = this.dest;
+    var destDirname = path.dirname(context);
     var relativePath = path.relative(path.resolve(destDirname), path.resolve(newDest));
 
     return relativePath.replace(/\\/g, '/');

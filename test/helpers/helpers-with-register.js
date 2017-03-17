@@ -5,7 +5,6 @@
  * Licensed under the MIT License (MIT).
  */
 
-
 module.exports.register = function(Handlebars, options) {
   'use strict';
 

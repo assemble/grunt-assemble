@@ -7,7 +7,7 @@
 
 var _ = require('lodash');
 
-module.exports.register = function (Handlebars, options) {
+module.exports.register = function(Handlebars, options) {
   'use strict';
 
   var opts = options || {};
@@ -75,13 +75,13 @@ module.exports.register = function (Handlebars, options) {
 
     var styles = [
       '<style>',
-        '.unselectable {',
-        '  -webkit-touch-callout: none;',
-        '    -webkit-user-select: none;',
-        '       -moz-user-select: none;',
-        '        -ms-user-select: none;',
-        '            user-select: none;',
-        '}',
+      '.unselectable {',
+      '  -webkit-touch-callout: none;',
+      '    -webkit-user-select: none;',
+      '       -moz-user-select: none;',
+      '        -ms-user-select: none;',
+      '            user-select: none;',
+      '}',
       '</style>'
     ].join('\n');
 
