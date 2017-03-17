@@ -37,6 +37,7 @@
   "files": [
     "lib"
   ],
+  "main": "./lib/assemble",
   "engines": {
     "node": ">= 0.8.0"
   },
