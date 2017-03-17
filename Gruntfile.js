@@ -21,11 +21,8 @@ module.exports = function(grunt) {
     /**
      * Lint all JavaScript
      */
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      files: [
+    eslint: {
+      src: [
         'Gruntfile.js',
         'lib/**/*.js',
         'tasks/**/*.js',
@@ -379,13 +376,16 @@ module.exports = function(grunt) {
 
   // Load NPM plugins to provide the necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('gruntify-eslint');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-sync-pkg');
   grunt.loadNpmTasks('grunt-verb');
 
   // Load this plugin.
   grunt.loadTasks('tasks');
+
+  // Lint
+  grunt.registerTask('lint', ['eslint']);
 
   // Build
   grunt.registerTask('docs', ['verb', 'sync']);
@@ -394,5 +394,5 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['assemble', 'mochaTest']);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', 'test', 'docs']);
+  grunt.registerTask('default', ['lint', 'clean', 'test', 'docs']);
 };
