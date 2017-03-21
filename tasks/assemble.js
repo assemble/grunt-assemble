@@ -65,7 +65,6 @@ module.exports = function(grunt) {
     app.layouts(opts.layouts);
 
     series(app.task.files, function(files, next) {
-      console.log(files)
       app.pages(files.src, app.options);
       app.toStream('pages')
         .pipe(app.renderFile(app.options.engine))

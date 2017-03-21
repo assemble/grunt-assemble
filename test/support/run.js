@@ -9,5 +9,5 @@ module.exports = function(assembleConfig, cb) {
   grunt.loadTasks('tasks');
   grunt.registerTask('default', ['assemble']);
 
-  grunt.tasks(['assemble'], {gruntfile: false});
+  grunt.tasks(['assemble'], {gruntfile: false}, cb);
 };
