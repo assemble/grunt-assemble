@@ -315,18 +315,25 @@ module.exports = function(grunt) {
      */
     clean: {
       tests: ['test/actual/**/*']
+    },
+
+    // lint build, test and code files
+    eslint: {
+      src: ['*.js', '{lib,tasks,test}/**/*.js']
     }
   });
 
   // Load NPM plugins to provide the necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('gruntify-eslint');
 
   // Load this plugin.
   grunt.loadTasks('tasks');
 
-  // Tests to be run.
-  grunt.registerTask('test', ['assemble']);
+  // Task aliases
+  grunt.registerTask('lint', ['eslint']);
+  grunt.registerTask('test', ['clean', 'assemble']);
 
   // Default task.
-  grunt.registerTask('default', ['clean', 'test']);
+  grunt.registerTask('default', ['lint', 'test']);
 };
