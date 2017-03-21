@@ -1,7 +1,6 @@
 'use strict';
 
 require('mocha');
-var assert = require('assert');
 var run = require('./support/run');
 
 describe('test', function() {

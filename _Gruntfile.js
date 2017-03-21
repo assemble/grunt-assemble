@@ -11,7 +11,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Metadata for tests
-    pkg : grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
     config: grunt.file.readJSON('test/fixtures/data/config.json'),
     site: grunt.file.readYAML('test/fixtures/data/_site.yml'),
 
@@ -246,10 +246,10 @@ module.exports = function(grunt) {
       // Pages collections
       pages_array: {
         options: {
-          layout: "post.hbs",
+          layout: 'post.hbs',
           site: {
-            title: "A Blog",
-            author: "Jon Schlinkert"
+            title: 'A Blog',
+            author: 'Jon Schlinkert'
           },
           pages: '<%= config.pages.one %>'
         },
@@ -306,7 +306,7 @@ module.exports = function(grunt) {
 
     // Example config data for "pages_array" and "pages_object" targets
     component: {
-      one: "alert"
+      one: 'alert'
     },
 
     /**

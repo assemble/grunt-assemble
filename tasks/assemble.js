@@ -10,7 +10,7 @@
 var path = require('path');
 var series = require('async-each-series');
 var plugin = require('../lib/plugin');
-var mapper = require('../lib/mapper');
+// var mapper = require('../lib/mapper');
 var utils = require('../lib/utils');
 
 module.exports = function(grunt) {
