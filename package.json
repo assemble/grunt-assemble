@@ -41,7 +41,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha"
   },
   "dependencies": {
     "arr-flatten": "^1.0.1",
