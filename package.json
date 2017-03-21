@@ -65,6 +65,8 @@
     "spawn-commands": "^0.3.1"
   },
   "devDependencies": {
+    "delete": "^0.3.2",
+    "fs-exists-sync": "^0.1.0",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "gruntify-eslint": "^3.1.0",
