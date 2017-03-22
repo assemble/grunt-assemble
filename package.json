@@ -9,7 +9,7 @@
     "Alex Sanz (https://github.com/asans)",
     "Anders D. Johnson (https://andrz.me)",
     "Ben Drucker <bvdrucker@gmail.com> (http://www.bendrucker.me)",
-    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
+    "Brian Woodward <brian.woodward@gmail.com> (https://twitter.com/doowb)",
     "Carl A. Bauer <carl.a.bauer@gmail.com> (http://carlbauer.org)",
     "Casey Garland <caseyg1204@gmail.com> (https://github.com/caseyg1204)",
     "Dane Petersen (https://thegreatsunra.com)",
@@ -17,7 +17,8 @@
     "Gion Kunz <gion.kunz@gmail.com> (https://github.com/gionkunz)",
     "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)",
     "Jordan Thomas <mail@jordanthomas.me> (http://jordanthomas.me)",
-    "Justin Heideman <justin@fiddlyio.com> (http://fiddlyio.com)",
+    "Justin Heideman <justin@fiddlyio.com> (https://fiddlyio.com)",
+    "Laurent Goderre <laurent.goderre@gmail.com> (https://github.com/LaurentGoderre)",
     "Michael Mifsud (https://github.com/xzyfer)",
     "Mikko Tapionlinna (http://mikko.tapionlinna.fi)",
     "Munim Abdul <http://scr.im/munim> (http://www.munim.net)",
@@ -38,7 +39,7 @@
     "tasks"
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "mocha"
