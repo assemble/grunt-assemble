@@ -23,17 +23,63 @@ describe('test', function() {
       }
     }, function(err) {
       if (err) return cb(err);
-      exists(actual('single_page.html'), cb);
+      exists('single_page.html', cb);
     });
   });
 
-  it('should run a config', function(cb) {
+  it('should render pages with `layout: false` or `layout: none` defined.', function(cb) {
     run({
-      single_page: {
+      no_layout: {
         files: {
-          'test/actual/single_page.html': ['test/fixtures/pages/example.hbs']
+          'test/actual/no_layout/': ['test/fixtures/pages/nolayout/*.hbs']
         }
       }
-    }, cb);
+    }, function(err) {
+      if (err) return cb(err);
+      exists(['no_layout/no-layout.html', 'no_layout/no-layout-none.html'], cb);
+    });
+  });
+
+  it('should allow layouts defined in YFM to be defined without an extension.', function(cb) {
+    // TODO: pager helper
+    // TODO: default helper
+    run({
+      options: {
+        layouts: [fixtures('layouts/*.hbs')]
+      },
+      layout_ext: {
+        options: {
+          layout: 'none', // override default, layout is redefined in YFM
+          layoutext: '.hbs'
+        },
+        files: {
+          'test/actual/layout_ext/': ['test/fixtures/pages/layoutext/layoutext.hbs']
+        }
+      }
+    }, function(err) {
+      if (err) return cb(err);
+      exists(['layout_ext/layoutext.html'], cb);
+    });
+  });
+
+  it('should flatten nested layouts.', function(cb) {
+    run({
+      options: {
+        layouts: [fixtures('layouts/*.hbs')]
+      },
+      nested_layouts: {
+        options: {
+          partials: fixtures('partials/*.hbs'),
+          data: fixtures('data/*.{json,yml}'),
+          layout: 'one.hbs'
+        },
+        files: {
+          'test/actual/nested_layouts/': ['test/fixtures/pages/nested/*.hbs']
+        }
+      }
+    }, function(err) {
+      if (err) return cb(err);
+      exists(['nested_layouts/deep-nested-layouts.html', 'nested_layouts/nested-layouts.html'], cb);
+    });
   });
 });

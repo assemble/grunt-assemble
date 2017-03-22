@@ -1,17 +1,26 @@
 'use strict';
 
+var path = require('path');
 var assert = require('assert');
 var exists = require('fs-exists-sync');
 
-module.exports = function(fp, msg, cb) {
-  if (typeof msg === 'function') {
-    cb = msg;
-    msg = '';
+var actual = path.resolve.bind(path.resolve, __dirname, '..', 'actual');
+
+module.exports = function(files, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
   }
 
-  msg = msg || `expected ${fp} to exist`;
+  var opts = Object.assign({}, options);
+  files = Array.isArray(files) ? files : [files];
+
   try {
-    assert(exists(fp), msg);
+    var len = files.length;
+    for (var i = 0; i < len; i++) {
+      var fp = actual(files[i]);
+      assert(exists(fp), opts.msg || `expected ${fp} to exist`);
+    }
   } catch (err) {
     if (typeof cb === 'function') {
       cb(err);
