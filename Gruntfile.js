@@ -14,25 +14,21 @@ module.exports = function(grunt) {
   grunt.initConfig({
 
     // Metadata for tests
-    pkg : grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
     config: grunt.file.readJSON('test/fixtures/data/config.json'),
     site: grunt.file.readYAML('test/fixtures/data/_site.yml'),
 
     /**
      * Lint all JavaScript
      */
-    jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
-      files: [
+    eslint: {
+      src: [
         'Gruntfile.js',
         'lib/**/*.js',
         'tasks/**/*.js',
         'test/**/*.js'
       ]
     },
-
 
     /**
      * Run mocha tests.
@@ -46,20 +42,19 @@ module.exports = function(grunt) {
       }
     },
 
-
     /**
      * Assemble examples/tests
      */
     assemble: {
       options: {
         assets: 'test/assets',
-        helpers: ['test/helpers/*.js'],
+        helpers: ['test/helpers/*.js', 'handlebars-helper-eachitems'],
         layoutdir: 'test/fixtures/layouts',
         layout: 'default.hbs',
         flatten: true,
         data: {
-          global1: "globalData1",
-          global2: "globalData2"
+          global1: 'globalData1',
+          global2: 'globalData2'
         }
       },
       // Should render pages with `layout: false` or `layout: none` defined
@@ -282,10 +277,10 @@ module.exports = function(grunt) {
       // Pages collections
       pages_array: {
         options: {
-          layout: "post.hbs",
+          layout: 'post.hbs',
           site: {
-            title: "A Blog",
-            author: "Jon Schlinkert"
+            title: 'A Blog',
+            author: 'Jon Schlinkert'
           },
           pages: '<%= config.pages.one %>'
         },
@@ -342,10 +337,10 @@ module.exports = function(grunt) {
       noyfmdata: {
         options: {
           data: {
-            one: "1-one",
-            two: "2-two",
-            three: "3-three",
-            global1: "override global1 data via task option"
+            one: '1-one',
+            two: '2-two',
+            three: '3-three',
+            global1: 'override global1 data via task option'
           }
         },
         files: {
@@ -363,9 +358,9 @@ module.exports = function(grunt) {
       }
     },
 
-    // Example config data for "pages_array" and "pages_object" targets
+    // Example config data for 'pages_array' and 'pages_object' targets
     component: {
-      one: "alert"
+      one: 'alert'
     },
 
     /**
@@ -379,13 +374,16 @@ module.exports = function(grunt) {
 
   // Load NPM plugins to provide the necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('gruntify-eslint');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-sync-pkg');
   grunt.loadNpmTasks('grunt-verb');
 
   // Load this plugin.
   grunt.loadTasks('tasks');
+
+  // Lint
+  grunt.registerTask('lint', ['eslint']);
 
   // Build
   grunt.registerTask('docs', ['verb', 'sync']);
@@ -394,5 +392,5 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['assemble', 'mochaTest']);
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', 'test', 'docs']);
+  grunt.registerTask('default', ['lint', 'clean', 'test', 'docs']);
 };

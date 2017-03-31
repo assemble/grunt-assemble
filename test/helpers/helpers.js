@@ -5,7 +5,6 @@
  * Licensed under the MIT License (MIT).
  */
 
-
 var bar = function(msg) {
   return '<!-- foo -->\n<!-- ' + msg + ' -->';
 };

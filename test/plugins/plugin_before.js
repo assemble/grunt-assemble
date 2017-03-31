@@ -10,7 +10,7 @@ var runCount = 0;
 
 var before = function(params, next) {
   runCount++;
-  params.assemble.options.pages.forEach(function (page) {
+  params.assemble.options.pages.forEach(function(page) {
     page.data.title = 'BEFORE TITLE ' + runCount;
   });
   next();

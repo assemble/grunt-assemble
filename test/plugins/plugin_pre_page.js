@@ -6,9 +6,8 @@
  * Licensed under the MIT License (MIT).
  */
 
-
 var plugin = function(params, next) {
-  params.context.page.page = "W00T!!!";
+  params.context.page.page = 'W00T!!!';
   next();
 };
 

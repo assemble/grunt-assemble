@@ -320,7 +320,7 @@
                   dirname:       test/actual/yfm
                   filename:      associative-arrays.html
                   pagename:      associative-arrays.html
-                  basename:      associative-arrays
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="block-literals.html">block-literals.html</a></li>
@@ -352,7 +352,7 @@
                   dirname:       test/actual/yfm
                   filename:      block-literals.html
                   pagename:      block-literals.html
-                  basename:      block-literals
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="comments.html">comments.html</a></li>
@@ -384,7 +384,7 @@
                   dirname:       test/actual/yfm
                   filename:      comments.html
                   pagename:      comments.html
-                  basename:      comments
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="data-files.html">data-files.html</a></li>
@@ -416,7 +416,7 @@
                   dirname:       test/actual/yfm
                   filename:      data-files.html
                   pagename:      data-files.html
-                  basename:      data-files
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="data-types.html">data-types.html</a></li>
@@ -448,7 +448,7 @@
                   dirname:       test/actual/yfm
                   filename:      data-types.html
                   pagename:      data-types.html
-                  basename:      data-types
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="document.html">document.html</a></li>
@@ -480,7 +480,7 @@
                   dirname:       test/actual/yfm
                   filename:      document.html
                   pagename:      document.html
-                  basename:      document
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="lists.html">lists.html</a></li>
@@ -512,7 +512,7 @@
                   dirname:       test/actual/yfm
                   filename:      lists.html
                   pagename:      lists.html
-                  basename:      lists
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="relational-trees.html">relational-trees.html</a></li>
@@ -576,7 +576,7 @@
                   dirname:       test/actual/yfm
                   filename:      underscore.html
                   pagename:      underscore.html
-                  basename:      underscore
+                  basename:      relational-trees
                   ext:           .html
                   -->
                 <li><a href="variables.html">variables.html</a></li>
@@ -608,7 +608,7 @@
                   dirname:       test/actual/yfm
                   filename:      variables.html
                   pagename:      variables.html
-                  basename:      variables
+                  basename:      relational-trees
                   ext:           .html
                   -->
               </ul>
@@ -682,6 +682,7 @@
   "dirname": "test/actual/yfm",
   "ext": ".html",
   "extname": ".html",
+  "filename": "relational-trees.html",
   "filePair": {
     "src": [
       "test/fixtures/pages/yfm/associative-arrays.hbs",
@@ -703,7 +704,6 @@
       "dest": "test/actual/yfm/"
     }
   },
-  "filename": "relational-trees.html",
   "first": false,
   "index": 7,
   "isCurrentPage": false,
@@ -711,9 +711,9 @@
   "middle": true,
   "next": 8,
   "number": 8,
-  "page": "<!DOCTYPE html>\n  <html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout filename: '{{layout}}'</title>\n    <link rel=\"stylesheet\" href=\"http://getbootstrap.com/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"{{assets}}/validation.css\">\n  </head>\n  <body style=\"padding-top: 60px;\">\n    <div class=\"container\">\n\n      <!-- validate assets path -->\n      <section id=\"validate\"></section>\n      <div class=\"docs-section\">\n        <div class=\"docs-header\" id=\"content\">\n          <h4><strong class=\"text-muted\">{{page.src}}</strong> &#x2192; <strong class=\"text-success\">{{page.dest}}</strong></h4>\n        </div>\n        <hr>\n      </div>\n\n      {{pager pagination}}\n      <hr>\n\n      <div class=\"row\">\n        <!-- Column: sidebar -->\n        <div class=\"col-md-3\">\n          <div class=\"bs-sidebar hidden-print\" role=\"complementary\">\n            <!-- pagination -->\n            {{nav pagination}}\n          </div>\n        </div>\n        <!-- Column: content -->\n        <div class=\"col-md-9\" role=\"main\">\n          <div class=\"docs-section\">\n            <div class=\"docs-header\" id=\"content\">\n              <h4><strong>Page layout:</strong> {{default originalLayout '(no layout defined)'}}</h4>\n              <h4><strong>Page src:</strong> {{page.src}}</h4>\n              <h4><strong>Page dest:</strong> {{page.dest}}</h4>\n              <h4><strong>Dest filename:</strong> {{page.filename}}</h4>\n              <h4><strong>Dest basename:</strong> {{page.basename}}</h4>\n              <h4><strong>Page title:</strong> {{default title '(no title defined)'}}</h4>\n            </div>\n\n            <hr>\n            <div class=\"row\">\n              <div class=\"col-md-6\">\n                <!-- Categories Collection -->\n                {{#if categories}}\n                  {{> collections-categories }}\n                {{/if}}\n              </div>\n              <div class=\"col-md-6\">\n                {{#if tags}}\n                  {{> collections-tags }}\n                {{/if}}\n              </div>\n            </div>\n\n            <hr>\n\n            \n<div class=\"page-header\">\n  <h4>{{{title}}}</h4> \n</div>\n\n<div class=\"examples\">\n  <h4>Associative arrays</h4>\n  <dl class=\"dl-horizontal\">\n    {{#each steps}}\n      {{#each step}}\n        <dt>{{@key}}</dt> \n        <dd>{{.}}</dd>\n      {{/each}}\n      <hr>\n    {{/each}}\n  </dl>\n</div>\n\n            <div class=\"docs-header\" id=\"content\">\n              <h1>Content</h1>\n            </div>\n            <ul>\n            {{#each pages}}\n              <li><a href=\"{{relativeLink}}\">{{filename}}</a></li>\n            {{/each}}\n            </ul>\n\n            <hr>\n            <div style=\"display: none\">\n\n              <h1>Page</h1>\n              <!--\n              \"this\"\n              ===============================\n              this.src:      {{this.src}}\n              this.dest:     {{this.dest}}\n              this.layout:   {{this.layout}}\n              this.dirname:  {{this.dirname}}\n              this.filename: {{this.filename}}\n              this.pagename: {{this.pagename}}\n              this.basename: {{this.basename}}\n              this.ext:      {{this.ext}}\n\n              \"page\"\n              ===============================\n              page.src:        {{page.src}}\n              page.dest:       {{page.dest}}\n              page.layout:     {{page.layout}}\n              page.dirname:    {{page.dirname}}\n              page.filename:   {{page.filename}}\n              page.pagename:   {{page.pagename}}\n              page.basename:   {{page.basename}}\n              page.ext:        {{page.ext}}\n\n              \"root\"\n              ===============================\n              src:           {{src}}\n              dest:          {{dest}}\n              layout:        {{layout}}\n              dirname:       {{dirname}}\n              filename:      {{filename}}\n              pagename:      {{pagename}}\n              basename:      {{basename}}\n              ext:           {{ext}}\n              -->\n              <h1>Each pages</h1>\n              <ul>\n                {{#each pages}}\n                <li><a href=\"{{relativeLink}}\">{{filename}}</a></li>\n                  <!--\n                  \"this\"\n                  ===============================\n                  this.src:      {{this.src}}\n                  this.dest:     {{this.dest}}\n                  this.dirname:  {{this.dirname}}\n                  this.filename: {{this.filename}}\n                  this.pagename: {{this.pagename}}\n                  this.basename: {{this.basename}}\n                  this.ext:      {{this.ext}}\n\n                  \"page\"\n                  ===============================\n                  page.src:      {{../page.src}}\n                  page.dest:     {{../page.dest}}\n                  page.dirname:  {{../page.dirname}}\n                  page.filename: {{../page.filename}}\n                  page.pagename: {{../page.pagename}}\n                  page.basename: {{../page.basename}}\n                  page.ext:      {{../page.ext}}\n\n                  \"root\"\n                  ===============================\n                  src:           {{src}}\n                  dest:          {{dest}}\n                  dirname:       {{dirname}}\n                  filename:      {{filename}}\n                  pagename:      {{pagename}}\n                  basename:      {{basename}}\n                  ext:           {{ext}}\n                  -->\n                {{/each}}\n              </ul>\n\n              <h1>Debug Info</h1>\n              {{{inspect page 'json'}}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"{{assets}}/validation.js\"></script>\n  </body>\n</html>\n",
-  "pageName": "relational-trees.html",
+  "page": "<!DOCTYPE html>\n  <html lang=\"en\">\n  <head>\n    <meta charset=\"UTF-8\">\n    <title>Layout filename: '{{layout}}'</title>\n    <link rel=\"stylesheet\" href=\"http://getbootstrap.com/dist/css/bootstrap.min.css\">\n    <link rel=\"stylesheet\" href=\"{{assets}}/validation.css\">\n  </head>\n  <body style=\"padding-top: 60px;\">\n    <div class=\"container\">\n\n      <!-- validate assets path -->\n      <section id=\"validate\"></section>\n      <div class=\"docs-section\">\n        <div class=\"docs-header\" id=\"content\">\n          <h4><strong class=\"text-muted\">{{page.src}}</strong> &#x2192; <strong class=\"text-success\">{{page.dest}}</strong></h4>\n        </div>\n        <hr>\n      </div>\n\n      {{pager pagination}}\n      <hr>\n\n      <div class=\"row\">\n        <!-- Column: sidebar -->\n        <div class=\"col-md-3\">\n          <div class=\"bs-sidebar hidden-print\" role=\"complementary\">\n            <!-- pagination -->\n            {{nav pagination}}\n          </div>\n        </div>\n        <!-- Column: content -->\n        <div class=\"col-md-9\" role=\"main\">\n          <div class=\"docs-section\">\n            <div class=\"docs-header\" id=\"content\">\n              <h4><strong>Page layout:</strong> {{default originalLayout '(no layout defined)'}}</h4>\n              <h4><strong>Page src:</strong> {{page.src}}</h4>\n              <h4><strong>Page dest:</strong> {{page.dest}}</h4>\n              <h4><strong>Dest filename:</strong> {{page.filename}}</h4>\n              <h4><strong>Dest basename:</strong> {{page.basename}}</h4>\n              <h4><strong>Page title:</strong> {{default title '(no title defined)'}}</h4>\n            </div>\n\n            <hr>\n            <div class=\"row\">\n              <div class=\"col-md-6\">\n                <!-- Categories Collection -->\n                {{#if categories}}\n                  {{> collections-categories }}\n                {{/if}}\n              </div>\n              <div class=\"col-md-6\">\n                {{#if tags}}\n                  {{> collections-tags }}\n                {{/if}}\n              </div>\n            </div>\n\n            <hr>\n\n            \n<div class=\"page-header\">\n  <h4>{{{title}}}</h4> \n</div>\n\n<div class=\"examples\">\n  <h4>Associative arrays</h4>\n  <dl class=\"dl-horizontal\">\n    {{#each steps}}\n      {{#each step}}\n        <dt>{{@key}}</dt> \n        <dd>{{.}}</dd>\n      {{/each}}\n      <hr>\n    {{/each}}\n  </dl>\n</div>\n\n            <div class=\"docs-header\" id=\"content\">\n              <h1>Content</h1>\n            </div>\n            <ul>\n            {{#each pages}}\n              <li><a href=\"{{relativeLink}}\">{{filename}}</a></li>\n            {{/each}}\n            </ul>\n\n            <hr>\n            <div style=\"display: none\">\n\n              <h1>Page</h1>\n              <!--\n              \"this\"\n              ===============================\n              this.src:      {{this.src}}\n              this.dest:     {{this.dest}}\n              this.layout:   {{this.layout}}\n              this.dirname:  {{this.dirname}}\n              this.filename: {{this.filename}}\n              this.pagename: {{this.pagename}}\n              this.basename: {{this.basename}}\n              this.ext:      {{this.ext}}\n\n              \"page\"\n              ===============================\n              page.src:        {{page.src}}\n              page.dest:       {{page.dest}}\n              page.layout:     {{page.layout}}\n              page.dirname:    {{page.dirname}}\n              page.filename:   {{page.filename}}\n              page.pagename:   {{page.pagename}}\n              page.basename:   {{page.basename}}\n              page.ext:        {{page.ext}}\n\n              \"root\"\n              ===============================\n              src:           {{src}}\n              dest:          {{dest}}\n              layout:        {{layout}}\n              dirname:       {{@root.dirname}}\n              filename:      {{filename}}\n              pagename:      {{pagename}}\n              basename:      {{@root.basename}}\n              ext:           {{ext}}\n              -->\n              <h1>Each pages</h1>\n              <ul>\n                {{#each pages}}\n                <li><a href=\"{{relativeLink}}\">{{filename}}</a></li>\n                  <!--\n                  \"this\"\n                  ===============================\n                  this.src:      {{this.src}}\n                  this.dest:     {{this.dest}}\n                  this.dirname:  {{this.dirname}}\n                  this.filename: {{this.filename}}\n                  this.pagename: {{this.pagename}}\n                  this.basename: {{this.basename}}\n                  this.ext:      {{this.ext}}\n\n                  \"page\"\n                  ===============================\n                  page.src:      {{../page.src}}\n                  page.dest:     {{../page.dest}}\n                  page.dirname:  {{../page.dirname}}\n                  page.filename: {{../page.filename}}\n                  page.pagename: {{../page.pagename}}\n                  page.basename: {{../page.basename}}\n                  page.ext:      {{../page.ext}}\n\n                  \"root\"\n                  ===============================\n                  src:           {{src}}\n                  dest:          {{dest}}\n                  dirname:       {{@root.dirname}}\n                  filename:      {{filename}}\n                  pagename:      {{pagename}}\n                  basename:      {{@root.basename}}\n                  ext:           {{ext}}\n                  -->\n                {{/each}}\n              </ul>\n\n              <h1>Debug Info</h1>\n              {{{inspect page 'json'}}}\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"{{assets}}/validation.js\"></script>\n  </body>\n</html>\n",
   "pagename": "relational-trees.html",
+  "pageName": "relational-trees.html",
   "prev": 6,
   "relativeLink": "relational-trees.html",
   "src": "test/fixtures/pages/yfm/relational-trees.hbs",

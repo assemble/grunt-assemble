@@ -5,9 +5,9 @@
  * Licensed under the MIT License (MIT).
  */
 
-var expect   = require('chai').expect;
+var expect = require('chai').expect;
 
-describe("awesome", function() {
+describe('awesome', function() {
   it('should run an awesome test', function() {
     expect(1).to.equal(1);
   });

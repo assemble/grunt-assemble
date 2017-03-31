@@ -10,7 +10,7 @@ var runCount = 0;
 
 var after = function(params, next) {
   runCount++;
-  params.assemble.options.pages.forEach(function (page) {
+  params.assemble.options.pages.forEach(function(page) {
     params.grunt.file.write(page.dest, 'AFTER OVERWRITE ' + runCount);
   });
   next();

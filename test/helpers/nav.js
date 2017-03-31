@@ -5,11 +5,10 @@
  * Licensed under the MIT License (MIT).
  */
 
-var _     = require('lodash');
-
+var _ = require('lodash');
 
 // Export helpers
-module.exports.register = function (Handlebars, options) {
+module.exports.register = function(Handlebars, options) {
   'use strict';
 
   var opts = options || {};

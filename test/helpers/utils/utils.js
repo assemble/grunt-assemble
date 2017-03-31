@@ -8,7 +8,7 @@
 
 var utils = module.exports = {};
 
-var toString = function (val) {
+var toString = function(val) {
   if (val == null) {
     return '';
   } else {
@@ -17,10 +17,10 @@ var toString = function (val) {
 };
 utils.toString = Object.prototype.toString;
 
-utils.lowerCase = function (str) {
+utils.lowerCase = function(str) {
   return toString(str).toLowerCase();
 };
 
-utils.isUndefined = function (value) {
+utils.isUndefined = function(value) {
   return value === 'undefined' || Object.toString.call(value) === '[object Function]' || (value.hash != null);
 };
