@@ -488,7 +488,7 @@ module.exports = function(grunt) {
       options.layout = undefined;
       options.collections = undefined;
 
-      datas = _.merge(data, pageContext);
+      datas = _.merge({}, data, pageContext);
       context = _.extend({}, context, assemble.util.filterProperties(options), datas);
       options.data = data;
       options.pages = pages;
@@ -526,7 +526,7 @@ module.exports = function(grunt) {
       options.pages = undefined;
       options.layout = undefined;
       options.collections = undefined;
-      datas = _.merge(data, pageContext);
+      datas = _.merge({}, data, pageContext);
       context = _.extend({}, context, assemble.util.filterProperties(options), layout.data, datas);
 
       options.data = data;
