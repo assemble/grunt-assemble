@@ -488,7 +488,7 @@ module.exports = function(grunt) {
       options.layout = undefined;
       options.collections = undefined;
 
-      datas = _.merge(data, pageContext);
+      datas = _.merge({}, data, pageContext);
       context = _.extend({}, context, assemble.util.filterProperties(options), datas);
       options.data = data;
       options.pages = pages;
@@ -526,7 +526,7 @@ module.exports = function(grunt) {
       options.pages = undefined;
       options.layout = undefined;
       options.collections = undefined;
-      datas = _.merge(data, pageContext);
+      datas = _.merge({}, data, pageContext);
       context = _.extend({}, context, assemble.util.filterProperties(options), layout.data, datas);
 
       options.data = data;
@@ -656,6 +656,19 @@ module.exports = function(grunt) {
 
         layout = grunt.file.read(layout);
         layout = layout.replace(/\{{>\s*body\s*}}/, function() { return defaultLayout; });
+        
+        // As we have documentation include into the pattern we need to extract the pattern content.
+        // Sometimes we have documenation for AMO doc and for HTML doc.
+        var part = /([^]*)---(?:[^]*)---(?:[^]*)---(?:[^]*)/g.exec(layout)
+        if (part !== null) {
+          layout = part[1]
+        } else {
+          // But sometimes there is only documenation for the AMO.
+          part = /([^]*)---(?:[^]*)---(?:[^]*)/g.exec(layout)
+          if (part !== null) {
+            layout = part[1]
+          }
+        }
       }
 
       var parsedLayout = matter(layout, assemble.options.matter);
